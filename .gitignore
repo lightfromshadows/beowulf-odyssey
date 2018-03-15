@@ -1,0 +1,36 @@
+#Big ugly directories
+Temp
+Library
+*Builds
+
+
+#Solution files, Unity auto-rebuilds them so it's not worth tracking
+*.sln
+*.suo
+*.tmp
+*.csproj
+*.user
+*.userprefs
+ExportedObj/
+
+#VSCode specific ignores
+obj
+.vscode
+
+#You can stop tracking previously added files with "git update-index --assume-unchanged *.unityproj"
+*.unityproj
+
+
+## Annoying OS Files ##
+#Remember : git update-index --assume-unchanged .DS_Store
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
+
+# Builds
+*.apk
+*.unitypackage
