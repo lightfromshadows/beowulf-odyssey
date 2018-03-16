@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour {
 
-    [SerializeField] CharacterStatsObj myStats;
+    [SerializeField] protected CharacterStatsObj myStats;
     [SerializeField] GameObject messagePrefab;
 
     public void FlashMessage(string message, Color color)
     {
-        StartCoroutine(FloatingMessageRoutine(message, color);
+        var go = Instantiate(messagePrefab, transform.position + (Vector3)(Random.insideUnitCircle * 100f), Quaternion.identity) as GameObject;
+        go.GetComponent<FloatingMessageController>().Init(message, color);
     }
 
-    IEnumerator FloatingMessageRoutine(string message, Color color)
-    {
-        // TODO
-        yield return null;
-    }
 
-    public void TakeDamage(float damage)
+    public void Attack(float damage, float toHit)
     {
         FlashMessage(string.Format("{0}!!", damage), Color.red);
         myStats.Health -= damage;

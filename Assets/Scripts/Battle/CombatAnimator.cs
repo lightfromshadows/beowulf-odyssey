@@ -17,7 +17,12 @@ public class CombatAnimator : MonoBehaviour {
 
     [SerializeField] CombatAnimation[] animations;
 
-    public void DoCombatAnimation(string name, TweenCallback callback = null)
+    public void DoCombatAnimation(string name)
+    {
+        DoCombatAnimation(name, null);
+    }
+
+    public void DoCombatAnimation(string name, TweenCallback callback)
     {
         var anim = from a in animations where a.name == name select a;
         if (anim.Count() > 0)
@@ -26,7 +31,12 @@ public class CombatAnimator : MonoBehaviour {
 
     public void DoCombatAnimation(CombatAnimation anim, TweenCallback callback = null)
     {
-        if (anim.jumpPoint)
-            transform.DOJump(anim.jumpPoint.position, anim.jumpPower, 1, anim.jumpTime).onComplete += callback;
+        if (anim.jumpPoint) {
+            var t = transform.DOJump(anim.jumpPoint.position, anim.jumpPower, 1, anim.jumpTime);
+
+             if (callback != null)
+                 t.onComplete += callback;
+            
+        }
     }
 }
