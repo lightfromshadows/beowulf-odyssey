@@ -70,4 +70,9 @@ public class CharacterStatsObj : ScriptableObject
     }
 
     List<BuffItem> buffs = new List<BuffItem>();
+
+    public void AddBuff(BuffItem item)
+    {
+        buffs.Add(item);
+    }
 }

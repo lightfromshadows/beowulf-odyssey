@@ -9,7 +9,8 @@ public class TownManager : MonoBehaviour {
     public Sun sun;
     private const float MAX_DAY_TIME = 10;
     private float dayTime = 0;
-    
+
+    [SerializeField] CharacterStatsObj playerStats;
 
 	// Use this for initialization
 	void Start () {
@@ -26,5 +27,10 @@ public class TownManager : MonoBehaviour {
             dayTime = 0;
         }
         sun.DayTimeTween = dayTime / MAX_DAY_TIME;
+    }
+
+    public void GivePlayerItem(BuffItem buffItem)
+    {
+        playerStats.AddBuff(buffItem);
     }
 }

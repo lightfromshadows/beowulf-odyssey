@@ -488,6 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 1162925010}
+  playerStats: {fileID: 0}
 --- !u!4 &1145863908
 Transform:
   m_ObjectHideFlags: 0
@@ -597,6 +598,7 @@ GameObject:
   - component: {fileID: 1760019257}
   - component: {fileID: 1760019256}
   - component: {fileID: 1760019255}
+  - component: {fileID: 1760019259}
   m_Layer: 0
   m_Name: house
   m_TagString: Untagged
@@ -697,3 +699,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760019259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1760019254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1145863907}
+          m_MethodName: GivePlayerItem
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: BuffItem, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
