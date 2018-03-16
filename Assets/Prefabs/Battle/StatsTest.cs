@@ -9,7 +9,8 @@ public class StatsTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
+        playerStats.Init();
+        wolfStats.Init();
 	}
 	
 	// Update is called once per frame
