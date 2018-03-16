@@ -35,7 +35,7 @@ public class CharacterStatsObj : ScriptableObject
             return _health; 
         }
         set {
-            _health = value;
+            _health = Mathf.Clamp(value, 0f, MaxHealth);
         }
     }
 
@@ -74,5 +74,11 @@ public class CharacterStatsObj : ScriptableObject
     public void AddBuff(BuffItem item)
     {
         buffs.Add(item);
+    }
+
+    public void ConsumeItem(BuffItem item)
+    {
+        // TODO verify and notify that item is removed
+        buffs.Remove(item);
     }
 }

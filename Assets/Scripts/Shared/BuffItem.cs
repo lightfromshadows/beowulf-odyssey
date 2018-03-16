@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BuffItem : ScriptableObject
 {
+    public enum Target {
+        Self, Other
+    }
+
+    public Target target = Target.Self;
+
     [TextArea]
     public string description;
     public Sprite sprite;
@@ -14,5 +20,7 @@ public class BuffItem : ScriptableObject
     public float powerUp;
     public float hitUp;
     public float healthUp;
+
+    public float passiveHealth;
 
 }
