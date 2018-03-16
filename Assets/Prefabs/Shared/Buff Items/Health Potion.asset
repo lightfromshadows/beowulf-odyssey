@@ -8,8 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2dc719299e2c469a8b0933e8ce52cb4, type: 3}
-  m_Name: ItemDatabase
+  m_Script: {fileID: 11500000, guid: 90a8b31e3ecab4e7caebb9cde3527802, type: 3}
+  m_Name: Health Potion
   m_EditorClassIdentifier: 
-  database:
-  - {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
+  description: 
+  sprite: {fileID: 0}
+  passive: 0
+  consumable: 0
+  powerUp: 0
+  hitUp: 0
+  healthUp: 0
