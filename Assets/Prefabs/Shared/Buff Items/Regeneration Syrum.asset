@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Regeneration Syrum
   m_EditorClassIdentifier: 
   target: 0
-  description: 
+  description: You're health will regenerate by 50 per turn.
   sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
   passive: 1
   consumable: 0
