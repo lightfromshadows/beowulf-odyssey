@@ -13,8 +13,12 @@ public class PlayerCombatController : CombatController {
     [SerializeField] BuffItem preciseBuff;
     [SerializeField] BuffItem heavyBuff;
 
+    bool myTurn = true;
+
     public void QuickAttack()
     {
+        if (!myTurn) return;
+
         float damage = myStats.Power + quickBuff.powerUp;
         float toHit = myStats.HitChance + quickBuff.hitUp;
         // Quick and dirty lazy way
@@ -24,13 +28,15 @@ public class PlayerCombatController : CombatController {
             combatAnimator.DoCombatAnimation("single_attack", () =>
             {
                 enemyController.Attack(damage, toHit);
-                combatAnimator.DoCombatAnimation("return");
+                combatAnimator.DoCombatAnimation("return", EndTurn);
             });
         });
     }
 
     public void PreciseAttack()
     {
+        if (!myTurn) return;
+
         float damage = myStats.Power + preciseBuff.powerUp;
         float toHit = myStats.HitChance + preciseBuff.hitUp;
 
@@ -38,21 +44,38 @@ public class PlayerCombatController : CombatController {
         combatAnimator.DoCombatAnimation("single_attack", () =>
         {
             enemyController.Attack(damage, toHit);
-            combatAnimator.DoCombatAnimation("return");
+            combatAnimator.DoCombatAnimation("return", EndTurn);
         });
     }
 
     public void HeavyAttack()
     {
+        if (!myTurn) return;
+
         float damage = myStats.Power + heavyBuff.powerUp;
         float toHit = myStats.HitChance + heavyBuff.hitUp;
 
         // Quick and dirty lazy way
-        combatAnimator.DoCombatAnimation("slow_attack", () =>
+        combatAnimator.DoCombatAnimation("hang", () =>
         {
-            enemyController.Attack(damage, toHit);
-            combatAnimator.DoCombatAnimation("return");
+            combatAnimator.DoCombatAnimation("drop_attack", () => {
+                enemyController.Attack(damage, toHit);
+                combatAnimator.DoCombatAnimation("return", EndTurn);
+            });
         });
     }
 
+    void EndTurn()
+    {
+        // TODO is wolf dead?
+
+        enemyController.TakeTurn();
+        myTurn = false;
+    }
+
+    public void TakeTurn()
+    {
+        // TODO am I dead?
+        myTurn = true;
+    }
 }

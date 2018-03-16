@@ -113,6 +113,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &78907382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 78907383}
+  m_Layer: 0
+  m_Name: w_return_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &78907383
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78907382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 520, y: 686, z: 3.790595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &78946488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,6 +1285,8 @@ MonoBehaviour:
   myStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
   messagePrefab: {fileID: 1673398451472060, guid: c2e83e0982ac34956811da5da882c15c,
     type: 2}
+  playerController: {fileID: 1113577351}
+  combatAnimator: {fileID: 893566322}
 --- !u!114 &893566322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,7 +1298,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee8c16a39e0a461b930adb6e2379463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animations: []
+  animations:
+  - name: attack
+    clip: {fileID: 0}
+    jumpPoint: {fileID: 1973738091}
+    jumpTime: 0.35
+    jumpPower: 120
+  - name: return
+    clip: {fileID: 0}
+    jumpPoint: {fileID: 78907383}
+    jumpTime: 0.5
+    jumpPower: 100
 --- !u!4 &893566323
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,11 +1895,21 @@ MonoBehaviour:
     jumpPoint: {fileID: 790076093}
     jumpTime: 0.25
     jumpPower: 100
+  - name: drop_attack
+    clip: {fileID: 0}
+    jumpPoint: {fileID: 790076093}
+    jumpTime: 0.1
+    jumpPower: 0
   - name: return
     clip: {fileID: 0}
     jumpPoint: {fileID: 1493579946}
     jumpTime: 0.5
     jumpPower: 100
+  - name: hang
+    clip: {fileID: 0}
+    jumpPoint: {fileID: 1278571031}
+    jumpTime: 0.5
+    jumpPower: 0
 --- !u!4 &1113577350
 Transform:
   m_ObjectHideFlags: 0
@@ -2153,6 +2203,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1210044160}
+--- !u!1 &1278571030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1278571031}
+  m_Layer: 0
+  m_Name: hang_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 1654036009018553494, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1278571031
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1278571030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105, y: 856, z: -2.621992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314455815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,7 +2587,7 @@ GameObject:
   m_Layer: 0
   m_Name: return_point
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1654036009018553494, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3055,6 +3133,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1812867972}
+--- !u!1 &1973738090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1973738091}
+  m_Layer: 0
+  m_Name: w_attack_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1973738091
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1973738090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -371, y: 738, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080541337
 GameObject:
   m_ObjectHideFlags: 0
