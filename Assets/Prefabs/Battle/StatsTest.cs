@@ -12,10 +12,10 @@ public class StatsTest : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         playerStats.Init();
-        foreach (var b in buffs)
-        {
-            playerStats.AddBuff(b);
-        }
+        //foreach (var b in buffs)
+        //{
+        //    playerStats.AddBuff(b);
+        //}
         wolfStats.Init();
 	}
 	

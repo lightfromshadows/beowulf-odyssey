@@ -27,7 +27,7 @@ public class CombatController : MonoBehaviour {
         }
     }
 
-    public void ChangeHealth(float health)
+    public virtual void ChangeHealth(float health)
     {
         if (health > 0f) {
             FlashMessage(string.Format("{0}!!", health), Color.green);
