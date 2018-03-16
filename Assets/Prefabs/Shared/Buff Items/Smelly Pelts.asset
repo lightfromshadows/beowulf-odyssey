@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90a8b31e3ecab4e7caebb9cde3527802, type: 3}
-  m_Name: Sword
+  m_Name: Smelly Pelts
   m_EditorClassIdentifier: 
-  effectRange: 0
-  description: 
-  sprite: {fileID: 0}
-  passive: 1
-  consumable: 0
-  powerUp: 100
-  hitUp: 0
+  target: 0
+  description: Makes Werewolf 25% less likely to hit
+  sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
+  passive: 0
+  consumable: 1
+  powerUp: 0
+  hitUp: -25
   healthUp: 0
-  passiveDamage: 0
+  passiveHealth: 0

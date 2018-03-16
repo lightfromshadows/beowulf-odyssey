@@ -7,9 +7,15 @@ public class StatsTest : MonoBehaviour {
     [SerializeField]CharacterStatsObj playerStats;
     [SerializeField]CharacterStatsObj wolfStats;
 
+    [SerializeField] BuffItem[] buffs;
+
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         playerStats.Init();
+        foreach (var b in buffs)
+        {
+            playerStats.AddBuff(b);
+        }
         wolfStats.Init();
 	}
 	
@@ -22,7 +28,10 @@ public class StatsTest : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.B)) {
-            // Wolf Attack
+            foreach(var b in buffs)
+            {
+                playerStats.AddBuff(b);
+            }
         }
 	}
 }

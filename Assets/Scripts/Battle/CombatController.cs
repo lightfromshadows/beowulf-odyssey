@@ -38,4 +38,16 @@ public class CombatController : MonoBehaviour {
 
         myStats.Health += health;
     }
+
+    public void ChangeHitChance(float hitUp)
+    {
+        if (hitUp > 0f)
+        {
+            FlashMessage(string.Format("Hit +{0}%", hitUp), Color.cyan);
+        }
+        else
+        {
+            FlashMessage(string.Format("Hit -{0}%", hitUp), Color.grey);
+        }
+    }
 }

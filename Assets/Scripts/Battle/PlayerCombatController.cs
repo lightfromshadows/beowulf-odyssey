@@ -86,6 +86,7 @@ public class PlayerCombatController : CombatController {
 			var faith = from b in passives where b.name == "Faith" select b;
             if (faith.Count() > 0)
             {
+                // Very special case
                 myStats.ConsumeItem(faith.First());
                 ChangeHealth(myStats.MaxHealth);
             }
@@ -109,5 +110,22 @@ public class PlayerCombatController : CombatController {
             }
         }
 		myTurn = true;
+    }
+
+    public void UseItem(BuffItem item)
+    {
+        if (item.target == BuffItem.Target.Self) {
+            if (item.consumable && item.healthUp > 0f) {
+                ChangeHealth(item.healthUp);
+            }
+        }
+        else {
+            if (item.consumable && item.hitUp < 0f)
+            {
+                enemyController.ChangeHitChance(item.hitUp);
+            }
+        }
+
+        myStats.ConsumeItem(item);
     }
 }

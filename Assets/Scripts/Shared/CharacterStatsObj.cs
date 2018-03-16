@@ -17,15 +17,23 @@ public class CharacterStatsObj : ScriptableObject
     [SerializeField] 
     private StatsContainer defaultStats = new StatsContainer() {power = 100f, hitChance = 50f, health = 80f };
 
+    protected float _power;
     public float Power {
         get {
-            return defaultStats.power;
+            return _power;
+        }
+        set {
+            _power = value;
         }
     }
 
+    protected float _hitChance = 0f;
     public float HitChance {
         get {
-            return defaultStats.hitChance;
+            return _hitChance;
+        }
+        set {
+            _hitChance = value;
         }
     }
 
@@ -41,7 +49,14 @@ public class CharacterStatsObj : ScriptableObject
 
     public void Init()
     {
-        _health = defaultStats.health;
+        _health = MaxHealth;
+        _hitChance = defaultStats.hitChance;
+        _power = defaultStats.power;
+        foreach (var b in PassiveBuffs)
+        {
+            _hitChance += b.hitUp;
+            _power += b.powerUp;
+        }
         buffs.Clear();
     }
 
@@ -80,5 +95,10 @@ public class CharacterStatsObj : ScriptableObject
     {
         // TODO verify and notify that item is removed
         buffs.Remove(item);
+    }
+
+    public bool HasBuff(BuffItem item)
+    {
+        return buffs.Contains(item);
     }
 }
