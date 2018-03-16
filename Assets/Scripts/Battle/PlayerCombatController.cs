@@ -18,6 +18,7 @@ public class PlayerCombatController : CombatController {
     public void QuickAttack()
     {
         if (!myTurn) return;
+        myTurn = false;
 
         float damage = myStats.Power + quickBuff.powerUp;
         float toHit = myStats.HitChance + quickBuff.hitUp;
@@ -36,6 +37,7 @@ public class PlayerCombatController : CombatController {
     public void PreciseAttack()
     {
         if (!myTurn) return;
+        myTurn = false;
 
         float damage = myStats.Power + preciseBuff.powerUp;
         float toHit = myStats.HitChance + preciseBuff.hitUp;
@@ -51,6 +53,7 @@ public class PlayerCombatController : CombatController {
     public void HeavyAttack()
     {
         if (!myTurn) return;
+        myTurn = false;
 
         float damage = myStats.Power + heavyBuff.powerUp;
         float toHit = myStats.HitChance + heavyBuff.hitUp;
