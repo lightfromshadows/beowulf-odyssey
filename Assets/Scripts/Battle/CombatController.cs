@@ -9,7 +9,8 @@ public class CombatController : MonoBehaviour {
 
     public void FlashMessage(string message, Color color)
     {
-        var go = Instantiate(messagePrefab, transform.position + (Vector3)(Random.insideUnitCircle * 100f), Quaternion.identity) as GameObject;
+        var go = Instantiate(messagePrefab) as GameObject;
+        (go.transform as RectTransform).position = transform.position + (Vector3)(Random.insideUnitCircle * 60f);
         go.GetComponent<FloatingMessageController>().Init(message, color);
     }
 
