@@ -16,6 +16,7 @@ ExportedObj/
 #VSCode specific ignores
 obj
 .vscode
+.vs
 
 #You can stop tracking previously added files with "git update-index --assume-unchanged *.unityproj"
 *.unityproj
