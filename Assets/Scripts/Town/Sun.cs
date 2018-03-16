@@ -7,7 +7,7 @@ public class Sun : MonoBehaviour {
     private float dayTimeTween = 0;
 
     private const int SUN_MIN_HEIGHT = 650;
-    private const int SUN_RISE_HEIGHT = 340;
+    private const int SUN_RISE_HEIGHT = 370;
 
     public float DayTimeTween
     {

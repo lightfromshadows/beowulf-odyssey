@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class House : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public TownManager town;
+
+    //[SerializeField] public BuffItem buff;
+    [SerializeField] public TownsPerson person;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,6 +21,6 @@ public class House : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Debug.Log("CLICK");
+        town.HouseClicked(this);
     }
 }
