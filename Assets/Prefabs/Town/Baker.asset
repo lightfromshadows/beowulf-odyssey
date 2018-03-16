@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae46f4e295e8547923fd095f78450a, type: 3}
+  m_Name: Baker
+  m_EditorClassIdentifier: 
+  description: Welcome to my bakery! Baking bread and folding flour. How can I help
+    you?
+  buff: {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
+  choice:
+  - I was wondering if you could direct me to the werewolf?
+  - Baking bread and folding flour, you do anything useful here?
+  - "I\u2019d like a loaf please"
+  responses:
+  - "The \u2013 the w-werewolf? Well, it\u2019s just outside of town. But you don\u2019t
+    want to go chasing it young hero. You have hardly any meat on your bones! Here,
+    take this loaf, for your health!"
+  - "I\u2019m plenty useful or maybe you\u2019d rather starve! You better not speak
+    to the Blacksmith that way or he\u2019ll cut your lips off!"
+  - "Sorry, but it looks like you don\u2019t have a coin on you. Hard to come by on
+    these hard times. Try knocking on someone else\u2019s door."
+  chooseWisely: 0
+  dead: 0
+  visited: 1
+  sprite: {fileID: 0}
