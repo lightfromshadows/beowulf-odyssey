@@ -11,10 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a8b31e3ecab4e7caebb9cde3527802, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  description: 
-  sprite: {fileID: 0}
+  target: 0
+  description: Restores 300 health
+  sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
   passive: 0
-  consumable: 0
+  consumable: 1
   powerUp: 0
   hitUp: 0
-  healthUp: 0
+  healthUp: 300
+  passiveHealth: 0

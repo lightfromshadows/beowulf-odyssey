@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 0}
   passive: 0
   consumable: 0
-  powerUp: -30
+  powerUp: -40
   hitUp: -30
   healthUp: 0
