@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Smelly Pelts
   m_EditorClassIdentifier: 
   target: 0
-  description: Makes Werewolf 25% less likely to hit
+  description: Werewolf's accuracy is decreased by 25% for all of combat... it's kind
+    of sad T_T
   sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
   passive: 0
   consumable: 1
