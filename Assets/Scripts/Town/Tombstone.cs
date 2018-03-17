@@ -9,7 +9,7 @@ public class Tombstone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] TownsPerson person;
     [SerializeField] Text title;
     [SerializeField] Text epitaph;
-    [SerializeField] Image headstone;
+    [SerializeField] SpriteRenderer headstone;
 
     [SerializeField] new Collider2D collider;
 
