@@ -1769,7 +1769,6 @@ GameObject:
   - component: {fileID: 647909840}
   - component: {fileID: 647909839}
   - component: {fileID: 647909838}
-  - component: {fileID: 647909837}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1777,21 +1776,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &647909837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 647909836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865b96297613942d4a6dc1846a29bbe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: dc3236c644351475c8a0a5b9a39dddc1, type: 2}
-  wolfStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
-  buffs:
-  - {fileID: 11400000, guid: 9caf1ffbe8ff1447cbd203a322d19002, type: 2}
 --- !u!81 &647909838
 AudioListener:
   m_ObjectHideFlags: 0

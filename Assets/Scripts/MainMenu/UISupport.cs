@@ -10,11 +10,18 @@ public class UISupport : MonoBehaviour {
     [SerializeField] float teaserTime = 1f;
     [SerializeField] Text buttonText;
 
+    [SerializeField] CharacterStatsObj playerStats;
+    [SerializeField] CharacterStatsObj wolfStats;
+
+
     bool triggerOnce = false;
 
     public void StartTheGame()
     {
         if (triggerOnce) return;
+
+        playerStats.Init();
+        wolfStats.Init();
 
         StartCoroutine(TeaseAndStart());
     }
