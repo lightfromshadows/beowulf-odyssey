@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour {
 
     public void OnSelect()
     {
-        descriptionText.text = buff.description;
+        descriptionText.text = buff.name + ": " + buff.description;
     }
 
     public void OnDeselect()

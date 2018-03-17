@@ -17,6 +17,11 @@ public class EndingPanel : MonoBehaviour {
     [SerializeField] CharacterStatsObj playerStats;
     [SerializeField] CharacterStatsObj wolfStats;
 
+    [SerializeField] AudioSource soundtrack;
+    [SerializeField] AudioClip winClip;
+    [SerializeField] AudioClip loseClip;
+
+
     private void OnEnable()
     {
 
@@ -72,6 +77,10 @@ public class EndingPanel : MonoBehaviour {
         }
 
         titleText.text = winMessage;
+
+        soundtrack.Stop();
+        soundtrack.clip = winClip;
+        soundtrack.Play();
     }
 
     void WolfWins()
@@ -86,6 +95,10 @@ public class EndingPanel : MonoBehaviour {
 
         endingText.text = endings[Random.Range(0, endings.Length)];
         titleText.text = loseMessage;
+
+        soundtrack.Stop();
+        soundtrack.clip = loseClip;
+        soundtrack.Play();
     }
 
     public void LoadMainMenu()
