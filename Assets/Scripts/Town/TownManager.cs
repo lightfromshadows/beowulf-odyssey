@@ -244,8 +244,6 @@ public class TownManager : MonoBehaviour {
 
             if (currentHouse.person.name == "GraveRobber" && deadPeople.Count() > 0 && Random.Range(0, 1) == 0)
             {
-
-                Debug.Log("Dead Count: " + deadPeople.Count());
                 //Handle taking stuff from the dead person.
                 TownsPerson p = deadPeople.ElementAt(Random.Range(0, deadPeople.Count()));
                 playerStats.AddBuff(p.buff);
