@@ -28,5 +28,5 @@ MonoBehaviour:
     these hard times. Try knocking on someone else\u2019s door."
   chooseWisely: 0
   dead: 0
-  visited: 1
-  sprite: {fileID: 0}
+  visited: 0
+  sprite: {fileID: 21300000, guid: cc45c3c7bb05ac34d89730afd08ba9e4, type: 3}

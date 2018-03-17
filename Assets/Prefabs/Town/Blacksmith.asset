@@ -28,4 +28,4 @@ MonoBehaviour:
   chooseWisely: 0
   dead: 0
   visited: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f40b3e0878461ad439788b29468f10dd, type: 3}

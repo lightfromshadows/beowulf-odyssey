@@ -12,7 +12,13 @@ public class TownManager : MonoBehaviour {
     public GameObject textBacking;
     public GameObject description;
     public GameObject[] choiceTexts;
-    private const float MAX_DAY_TIME = 10;
+    public GameObject overnightText;
+    public GameObject townspersonPic;
+    [SerializeField] CharacterStatsObj playerStats;
+    [SerializeField] TownsPerson[] people;
+
+
+    private const float MAX_DAY_TIME = 90;
     private float dayTime = 0;
     private House currentHouse;
 
@@ -22,10 +28,6 @@ public class TownManager : MonoBehaviour {
     private const int HOUSE_Y_MIN = 410;
     private const int HOUSE_Y_MAX = 680;
 
-
-    [SerializeField] CharacterStatsObj playerStats;
-    [SerializeField] TownsPerson[] people;
-
     List<House> houses = new List<House>();
 
     private Coroutine endDayCoroutine;
@@ -34,6 +36,29 @@ public class TownManager : MonoBehaviour {
     private SpriteRenderer fadeSprite;
     Color fadeVal;
 
+    private string[] nightStrings =
+    {
+        "All good things must come to an end and so day passes into night.",
+        "The sun is struck from the sky and the moon mourns her brother’s departure.",
+        "MOON!!!",
+        "This is when the inverse of a rooster crows to alert that night has fallen."
+    };
+
+    private string[] deadStrings =
+    {
+        "Nobody answers.",
+        "The house is dark, the door is open, everything is destroyed inside. You can’t bring yourself to enter.",
+        "Check the graveyard.",
+        "The door hangs open, the smell of a successful hunt emenates from within."
+    };
+
+    private string[] endDayStrings =
+    {
+        "You’ve wasted the day. Night falls. You hear a wolf howl in the distance.",
+        "The day has ended."
+    };
+
+
     // Use this for initialization
     void Start () {
         playerStats.Init();
@@ -41,8 +66,11 @@ public class TownManager : MonoBehaviour {
         ClearTextElements();
         CreateHouses();
         AssignPeopleToHouses();
+        ResetVisitedTownsfolk(); //These resets are required because the assets are persistent between runs.
+        ResetDeadTownsfolk();
         fadeSprite = blackLayer.GetComponent<SpriteRenderer>();
-
+        textBacking.SetActive(false);
+        ClearTownspersonPic();
     }
 	
 	// Update is called once per frame
@@ -52,6 +80,9 @@ public class TownManager : MonoBehaviour {
             return;
 
         dayTime += Time.deltaTime;
+
+        //TODO: Check if all dead or all angry
+        //If so, speed up time to 3x as fast?
 
         if(dayTime >= MAX_DAY_TIME)
         {
@@ -83,40 +114,69 @@ public class TownManager : MonoBehaviour {
 
     public IEnumerator EndDay(int choice)
     {
-
-        //Show result text. (Including failure)
-        ClearTextElements();
+        
         if(choice < 0)
         {
-            //Show the text with no good result.
-        }
-        else
-        {
-            choiceTexts[0].GetComponent<Text>().text = currentHouse.person.choice[choice];
-            choiceTexts[1].GetComponent<Text>().text = currentHouse.person.responses[choice];
-            choiceTexts[1].GetComponent<Text>().color = new Color(1, 0, 0);
+            ClearTextElements();
+            description.GetComponent<Text>().text = ChooseRandomStringFromArray(endDayStrings);
         }
 
-        yield return new WaitForSeconds(5); //Time to read the result
+        yield return new WaitForSeconds(8); //Time to read the result
+        ClearTownspersonPic();
         textBacking.SetActive(false); 
         day = false;
         ClearTextElements();
         fadeVal = new Color(0, 0, 0, 1f); 
         fadeSprite.color = fadeVal;
-        //Sound
-        //Text saying who was killed
-        yield return new WaitForSeconds(5);
+        Text ont = overnightText.GetComponent<Text>();
+        ont.text = ChooseRandomStringFromArray(nightStrings);
+        yield return new WaitForSeconds(4);                     //Let them read the night string.
+        TownsPerson p = KillVillager();
+        ont.text = ont.text + "\n\nThe werewolf has killed the " + p.name + ".";
+        yield return new WaitForSeconds(4);                     //Let them read who died.
 
+        //Reset for new day.
         dayTime = 0;
         day = true;
         madeChoice = false;
-        textBacking.SetActive(true);
+        ClearTextElements();
+        ResetVisitedTownsfolk();
 
+    }
+
+    public void MonsterAttackClicked()
+    {
+        //TODO: Transition to combat!
+        Debug.Log("FIGHT FIGHT FIGHT");
     }
 
     public void HouseClicked(House house)
     {
+        if (madeChoice || !day)
+            return;
 
+        ClearTextElements();
+        textBacking.SetActive(true);
+
+        SpriteRenderer tpRend = townspersonPic.GetComponent<SpriteRenderer>();
+        tpRend.sprite = house.person.sprite;
+ 
+        if(house.person.visited)
+        {
+            currentHouse = null;
+            description.GetComponent<Text>().text = "Your knocking is met by a yell. GO AWAY!";
+            return;
+        }
+
+        if(house.person.dead)
+        {
+            currentHouse = null;
+            description.GetComponent<Text>().text = ChooseRandomStringFromArray(deadStrings);
+            tpRend.sprite = null;
+            return;
+        }
+
+        townspersonPic.GetComponent<SpriteRenderer>().sprite = house.person.sprite;
         description.GetComponent<Text>().text = house.person.description;
 
         for(int i=0; i< choiceTexts.Length; i++)
@@ -125,35 +185,88 @@ public class TownManager : MonoBehaviour {
         }
 
         currentHouse = house;
-
     }
 
 
     public void ChoiceClicked(int choice)
     {
-        if (madeChoice)
+        if (madeChoice) //Prevent clicks mattering on result text.
             return;
 
         currentHouse.person.visited = true;
 
+        ClearTextElements();
+        choiceTexts[0].GetComponent<Text>().text = currentHouse.person.choice[choice];
+        choiceTexts[1].GetComponent<Text>().text = currentHouse.person.responses[choice];
+        choiceTexts[1].GetComponent<Text>().color = new Color(1, 0, 0);
+
         if(choice == currentHouse.person.chooseWisely)
         {
-            Debug.Log("You chose wisely");
             playerStats.AddBuff(currentHouse.person.buff);
+            madeChoice = true;
+            endDayCoroutine = StartCoroutine(EndDay(choice));
         }
-        else
-        {
-            Debug.Log("You did not choose wisely");
-        }
-
-        madeChoice = true;
-        endDayCoroutine = StartCoroutine(EndDay(choice));
 
     }
 
-    public void ClearTextElements()
+    public TownsPerson KillVillager()
+    {
+        int leftAlive = 0;
+        foreach(House h in houses)
+        {
+            if (!h.person.dead)
+                leftAlive++;
+        }
+
+        int killNum = Random.Range(0, leftAlive);
+
+        foreach(House h in houses)
+        {
+            if(!h.person.dead)
+            {
+                if(killNum == 0)
+                {
+                    h.person.dead = true;
+                    return h.person;
+                }
+                killNum--;
+            }
+        }
+
+        return null; //This is an error; shouldn't happen.
+    }
+
+    string ChooseRandomStringFromArray(string[] choices)
+    {
+        return choices[Random.Range(0, choices.Length)];
+    }
+
+    public void ResetVisitedTownsfolk()
+    {
+        foreach(House h in houses)
+        {
+            h.person.visited = false;
+        }
+    }
+
+    public void ResetDeadTownsfolk()
+    { 
+        foreach(House h in houses)
+        {
+            h.person.dead = false;
+        }
+    }
+    
+    public void ClearTownspersonPic()
+    {
+        SpriteRenderer tpRend = townspersonPic.GetComponent<SpriteRenderer>();
+        tpRend.sprite = null;
+    }
+
+    public void ClearTextElements() //Resets contents and color.
     {
         description.GetComponent<Text>().text = "";
+        overnightText.GetComponent<Text>().text = "";
 
         for (int i = 0; i < choiceTexts.Length; i++)
         {

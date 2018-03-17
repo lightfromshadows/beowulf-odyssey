@@ -26,5 +26,5 @@ MonoBehaviour:
     for you soil it with your venomous questions.
   chooseWisely: 0
   dead: 0
-  visited: 0
+  visited: 1
   sprite: {fileID: 0}

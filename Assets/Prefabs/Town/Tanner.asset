@@ -27,5 +27,5 @@ MonoBehaviour:
     off my porch and pray you don\u2019t die a sinner!"
   chooseWisely: 1
   dead: 0
-  visited: 0
+  visited: 1
   sprite: {fileID: 0}
