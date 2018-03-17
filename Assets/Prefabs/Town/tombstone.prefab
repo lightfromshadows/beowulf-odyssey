@@ -133,6 +133,7 @@ MonoBehaviour:
   person: {fileID: 11400000, guid: b2b82544d941eba4babefb453c840c15, type: 2}
   title: {fileID: 114360854738061528}
   epitaph: {fileID: 114341779835900292}
+  headstone: {fileID: 212380081235089582}
   collider: {fileID: 61434563739598218}
 --- !u!114 &114341779835900292
 MonoBehaviour:
