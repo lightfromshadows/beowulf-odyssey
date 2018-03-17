@@ -43,7 +43,8 @@ public class Inventory : MonoBehaviour {
 
     public void OnSelect()
     {
-        descriptionText.text = buff.name + ": " + buff.description;
+        if (playerStats.HasBuff(buff))
+            descriptionText.text = buff.name + ": " + buff.description;
     }
 
     public void OnDeselect()
