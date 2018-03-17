@@ -118,6 +118,7 @@ public class PlayerCombatController : CombatController {
 
         if (health < 0f)
         {
+            Debug.Log("Hurt");
             combatAnimator.DoCombatAnimation("hurt", () => {
                 combatAnimator.DoCombatAnimation("return");   
             });
