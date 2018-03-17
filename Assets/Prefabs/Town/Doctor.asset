@@ -30,4 +30,5 @@ MonoBehaviour:
   dead: 0
   visited: 0
   gaveBoon: 0
-  sprite: {fileID: 0}
+  epitaph: Mother, daughter, sister, grandmother, godmother, fairy-godmother
+  sprite: {fileID: 21300000, guid: d91d5834655b84a46844816a027ae13c, type: 3}

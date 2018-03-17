@@ -28,4 +28,5 @@ MonoBehaviour:
   dead: 0
   visited: 0
   gaveBoon: 0
-  sprite: {fileID: 0}
+  epitaph: What even is death really?
+  sprite: {fileID: 21300000, guid: 18fe7d6d93623456384fda8091c0ea42, type: 3}

@@ -14,6 +14,9 @@ public class TownsPerson : ScriptableObject
     public bool dead;
     public bool visited;
     public bool gaveBoon;
+
+    [TextArea]
+    public string epitaph;
     
     public Sprite sprite;
 
