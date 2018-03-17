@@ -17,6 +17,7 @@ using System.Linq;
 public class TownManager : MonoBehaviour {
 
     public Sun sun;
+    public SkyGradient sky;
     public GameObject blackLayer;
     public GameObject textBacking;
     public GameObject tpName;
@@ -120,6 +121,7 @@ public class TownManager : MonoBehaviour {
             fadeVal = new Color(0, 0, 0, a);
             fadeSprite.color = fadeVal;
             sun.DayTimeTween = dayTime / MAX_DAY_TIME;
+            sky.SetSkyColor(dayTime / MAX_DAY_TIME);
         }
 
 

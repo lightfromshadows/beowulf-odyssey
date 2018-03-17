@@ -712,3 +712,5 @@ MonoBehaviour:
   teaser: The Abyss Looks Into You
   teaserTime: 1
   buttonText: {fileID: 1860038330}
+  playerStats: {fileID: 11400000, guid: dc3236c644351475c8a0a5b9a39dddc1, type: 2}
+  wolfStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
