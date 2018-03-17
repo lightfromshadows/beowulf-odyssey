@@ -464,7 +464,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -599,7 +599,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -1132,7 +1132,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -1278,7 +1278,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -1938,7 +1938,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2115,7 +2115,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2280,7 +2280,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2483,7 +2483,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2596,7 +2596,7 @@ MonoBehaviour:
   messagePrefab: {fileID: 1673398451472060, guid: c2e83e0982ac34956811da5da882c15c,
     type: 2}
   audioSource: {fileID: 893566324}
-  hitSound: {fileID: 8300000, guid: 82978f10a719848a782d6c8343eedbec, type: 3}
+  hitSound: {fileID: 8300000, guid: 759a935a522e94ee4abc44bd5f1d00c4, type: 3}
   missSound: {fileID: 8300000, guid: 336269c37bd0e40d6b4b66dfc0ff280a, type: 3}
   playerController: {fileID: 1113577351}
   combatAnimator: {fileID: 893566322}
@@ -3101,6 +3101,9 @@ MonoBehaviour:
   endingText: {fileID: 1489127841}
   playerStats: {fileID: 11400000, guid: dc3236c644351475c8a0a5b9a39dddc1, type: 2}
   wolfStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
+  soundtrack: {fileID: 1041927750}
+  winClip: {fileID: 8300000, guid: f9f4ecfc7a19649d58ff5044d6ba6a90, type: 3}
+  loseClip: {fileID: 8300000, guid: c6f875cbab0a040be9e2591ed5987047, type: 3}
 --- !u!1 &1074137917
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,7 +3287,7 @@ MonoBehaviour:
   messagePrefab: {fileID: 1673398451472060, guid: c2e83e0982ac34956811da5da882c15c,
     type: 2}
   audioSource: {fileID: 1113577352}
-  hitSound: {fileID: 8300000, guid: 759a935a522e94ee4abc44bd5f1d00c4, type: 3}
+  hitSound: {fileID: 8300000, guid: 82978f10a719848a782d6c8343eedbec, type: 3}
   missSound: {fileID: 8300000, guid: 336269c37bd0e40d6b4b66dfc0ff280a, type: 3}
   enemyController: {fileID: 893566321}
   combatAnimator: {fileID: 1113577349}
@@ -3429,7 +3432,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -3744,7 +3747,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}

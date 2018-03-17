@@ -10,6 +10,11 @@ public class EnemyCombatController : CombatController
 
     [SerializeField] GameObject gameOverPanel;
 
+    private void Start()
+    {
+        myStats.Health = myStats.MaxHealth;
+    }
+
     public void TakeTurn()
     {
         float power = myStats.Power;
