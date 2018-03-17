@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -8,6 +9,9 @@ public class TownManager : MonoBehaviour {
 
     public Sun sun;
     public GameObject blackLayer;
+    public GameObject textBacking;
+    public GameObject description;
+    public GameObject[] choiceTexts;
     private const float MAX_DAY_TIME = 10;
     private float dayTime = 0;
     private House currentHouse;
@@ -26,12 +30,15 @@ public class TownManager : MonoBehaviour {
 
     private Coroutine endDayCoroutine;
     bool day = true;
+    bool madeChoice = false;
     private SpriteRenderer fadeSprite;
+    Color fadeVal;
 
     // Use this for initialization
     void Start () {
         playerStats.Init();
 
+        ClearTextElements();
         CreateHouses();
         AssignPeopleToHouses();
         fadeSprite = blackLayer.GetComponent<SpriteRenderer>();
@@ -48,49 +55,113 @@ public class TownManager : MonoBehaviour {
 
         if(dayTime >= MAX_DAY_TIME)
         {
-            endDayCoroutine = StartCoroutine(EndDay());
-            day = false;
+            if(!madeChoice)
+            {
+                endDayCoroutine = StartCoroutine(EndDay(-1));
+                day = false;
+            }
         }
         else
         {
-
+            //Set light fading.
+            float a = 0;
+            if(dayTime/MAX_DAY_TIME < 0.5)
+            {
+                a = 0.75f - dayTime / MAX_DAY_TIME * 1.5f;
+            }
+            else
+            {
+                a = (dayTime-MAX_DAY_TIME/2f) / MAX_DAY_TIME*1.5f;
+            }
+            fadeVal = new Color(0, 0, 0, a);
+            fadeSprite.color = fadeVal;
             sun.DayTimeTween = dayTime / MAX_DAY_TIME;
         }
 
 
     }
 
-    public IEnumerator EndDay()
+    public IEnumerator EndDay(int choice)
     {
-        //Run as a coroutine?
-        //Fade
-        Debug.Log("Fading");
-        yield return new WaitForSeconds(3);
-        Color fadeVal = new Color(0, 0, 0, 0.8f);
-        fadeSprite.color = fadeVal;
- 
+
         //Show result text. (Including failure)
+        ClearTextElements();
+        if(choice < 0)
+        {
+            //Show the text with no good result.
+        }
+        else
+        {
+            choiceTexts[0].GetComponent<Text>().text = currentHouse.person.choice[choice];
+            choiceTexts[1].GetComponent<Text>().text = currentHouse.person.responses[choice];
+            choiceTexts[1].GetComponent<Text>().color = new Color(1, 0, 0);
+        }
+
+        yield return new WaitForSeconds(5); //Time to read the result
+        textBacking.SetActive(false); 
+        day = false;
+        ClearTextElements();
+        fadeVal = new Color(0, 0, 0, 1f); 
+        fadeSprite.color = fadeVal;
         //Sound
         //Text saying who was killed
-        //Fade in
+        yield return new WaitForSeconds(5);
+
         dayTime = 0;
         day = true;
+        madeChoice = false;
+        textBacking.SetActive(true);
+
     }
 
     public void HouseClicked(House house)
     {
-        //Draw sprite and three options.
-        //Show buttons
+
+        description.GetComponent<Text>().text = house.person.description;
+
+        for(int i=0; i< choiceTexts.Length; i++)
+        {
+            choiceTexts[i].GetComponent<Text>().text = house.person.choice[i];
+        }
 
         currentHouse = house;
+
     }
+
 
     public void ChoiceClicked(int choice)
     {
-        playerStats.AddBuff(currentHouse.person.buff);
+        if (madeChoice)
+            return;
+
         currentHouse.person.visited = true;
-        //Call EndDay?
-        //Show result text on that screen
+
+        if(choice == currentHouse.person.chooseWisely)
+        {
+            Debug.Log("You chose wisely");
+            playerStats.AddBuff(currentHouse.person.buff);
+        }
+        else
+        {
+            Debug.Log("You did not choose wisely");
+        }
+
+        madeChoice = true;
+        endDayCoroutine = StartCoroutine(EndDay(choice));
+
+    }
+
+    public void ClearTextElements()
+    {
+        description.GetComponent<Text>().text = "";
+
+        for (int i = 0; i < choiceTexts.Length; i++)
+        {
+            Text t = choiceTexts[i].GetComponent<Text>();
+            t.text = "";
+            t.color = new Color(1, 1, 1);
+        }
+
     }
 
     private void CreateHouses()
@@ -103,6 +174,8 @@ public class TownManager : MonoBehaviour {
         for (int personCount = 0; personCount < people.Length; personCount++)
         {
             house = Instantiate(housePreFab);
+            if (Random.Range(0, 2) == 1)
+                house.GetComponent<SpriteRenderer>().flipX = true;
             house.town = this;
             pos.x = (HOUSE_X_MAX - HOUSE_X_MIN) / people.Length * personCount + HOUSE_X_MIN;
             pos.x += Random.Range(-HOUSE_X_WOBBLE, HOUSE_X_WOBBLE);
@@ -111,7 +184,6 @@ public class TownManager : MonoBehaviour {
             houses.Add(house);
         }
     }
-
 
     private void AssignPeopleToHouses()
     {

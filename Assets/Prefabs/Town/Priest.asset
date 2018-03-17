@@ -11,15 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae46f4e295e8547923fd095f78450a, type: 3}
   m_Name: Priest
   m_EditorClassIdentifier: 
-  description: 
+  description: Child, you come to this place of worship in your hour of need. How
+    might I help you?
   buff: {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
   choice:
-  - 
-  - 
-  - 
+  - "I\u2019ve come to pray, father."
+  - Would you be able to bless me? I might die tonight.
+  - How much did this church cost the town?
   responses:
-  - 
-  - 
-  - 
+  - I welcome a child of faith. Bend your knee and I shall bless you.
+  - To bless the wanting is sin enough. Now leave this place and find your own blessing
+    elsewhere.
+  - It cost the lives of saints and the tears of widows. Be gone from this holy ground
+    for you soil it with your venomous questions.
   chooseWisely: 0
+  dead: 0
+  visited: 0
   sprite: {fileID: 0}
