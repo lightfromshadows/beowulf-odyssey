@@ -7,7 +7,11 @@ using System.Linq;
 
 public class EndingPanel : MonoBehaviour {
 
+    [SerializeField] string loseMessage = "You have been slain";
+    [SerializeField] string winMessage = "You are victorious";
+
     [SerializeField] TownsPerson[] townsPeople;
+    [SerializeField] Text titleText;
     [SerializeField] Text endingText;
 
 
