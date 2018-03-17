@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae46f4e295e8547923fd095f78450a, type: 3}
+  m_Name: Doctor
+  m_EditorClassIdentifier: 
+  description: "I might be old but I can here you knocking so loudly at my door! Quiet
+    \u2013 oh you\u2019re right here. Nice to meet you. I\u2019m the doctor, what
+    ails you?"
+  buff: {fileID: 11400000, guid: 59c6e3f3cc8de44eeb736ac65d2cc180, type: 2}
+  choice:
+  - I wanted to see how you were doing.
+  - You have a lot of wrinkles.
+  - "I\u2019m so ill \u2013 please \u2013 medicine or I\u2019ll surely die."
+  responses:
+  - "So sweet. No one ever wonders how the doctor is doing. I\u2019m doing just fine
+    dear. Here, have this. It only works once but it packs a wallop."
+  - "Of course I do! I\u2019m old! You think I don\u2019t know? You\u2019re denser
+    than I thought. Get out or you\u2019ll spread your idiocy to the rest of us."
+  - "Your skin is oily and your breath smells terrible. You\u2019re fine. Now leave,
+    I\u2019m busy."
+  chooseWisely: 0
+  dead: 0
+  visited: 0
+  gaveBoon: 0
+  sprite: {fileID: 0}

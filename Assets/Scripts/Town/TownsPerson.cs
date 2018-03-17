@@ -13,6 +13,7 @@ public class TownsPerson : ScriptableObject
     public int chooseWisely;
     public bool dead;
     public bool visited;
+    public bool gaveBoon;
     
     public Sprite sprite;
 

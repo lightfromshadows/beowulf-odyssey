@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae46f4e295e8547923fd095f78450a, type: 3}
+  m_Name: GraveRobber
+  m_EditorClassIdentifier: 
+  description: "Hey, get away. Don\u2019t need the whole town to know I\u2019m grave
+    robbing."
+  buff: {fileID: 11400000, guid: 669ce1c8b898d4147b4819a5f934b0d1, type: 2}
+  choice:
+  - You just told me you were grave robbing.
+  - How has no one found you out yet?
+  - "Teach me your skills and I\u2019ll keep my mouth shut."
+  responses:
+  - I did. Now you getter get gone before I decide to slice your tongue out.
+  - "Because I\u2019m good at what I do kid."
+  - "...I\u2019ve been looking for a new apprentice. Sure, why not, you won\u2019t
+    die anytime soon right? The last one turned out to be full of worms."
+  chooseWisely: 2
+  dead: 0
+  visited: 0
+  gaveBoon: 0
+  sprite: {fileID: 0}

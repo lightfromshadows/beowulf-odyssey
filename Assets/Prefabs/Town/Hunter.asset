@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae46f4e295e8547923fd095f78450a, type: 3}
+  m_Name: Hunter
+  m_EditorClassIdentifier: 
+  description: "Name\u2019s hunter, figure it out. You woke me up from my rest. What\u2019d
+    you want?"
+  buff: {fileID: 11400000, guid: 474028a92f15945c28cc53e8c8f9177f, type: 2}
+  choice:
+  - I need a gun.
+  - "Your house is covered in\u2026pelts. Doesn\u2019t it smell?"
+  - Sorry, please, get some rest.
+  responses:
+  - "I don\u2019t hunt with guns! What do I look like, an coward? I use a bow like
+    any honorable hunter."
+  - "Sure is! Smells like a dream. Nothing like the smell of hide and fur to wake
+    you up in the night. Here, take some, it\u2019ll keep you alert and awake."
+  - "No sorry about it \u2013 I\u2019m already up \u2013 now get out! You\u2019re
+    scaring away the game!"
+  chooseWisely: 1
+  dead: 0
+  visited: 0
+  gaveBoon: 0
+  sprite: {fileID: 21300000, guid: 6f12ff70a8dd85f4eb8bb26480cb148c, type: 3}

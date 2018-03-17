@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Child, you come to this place of worship in your hour of need. How
     might I help you?
-  buff: {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
+  buff: {fileID: 11400000, guid: 9caf1ffbe8ff1447cbd203a322d19002, type: 2}
   choice:
   - "I\u2019ve come to pray, father."
   - Would you be able to bless me? I might die tonight.
@@ -26,5 +26,6 @@ MonoBehaviour:
     for you soil it with your venomous questions.
   chooseWisely: 0
   dead: 0
-  visited: 1
+  visited: 0
+  gaveBoon: 0
   sprite: {fileID: 0}

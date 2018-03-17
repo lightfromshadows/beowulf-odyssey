@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Linq;
+
+
+//TODO: Define highlight and response colors.
+//TODO: Finish clouds
 
 
 
@@ -70,8 +75,7 @@ public class TownManager : MonoBehaviour {
         ClearTextElements();
         CreateHouses();
         AssignPeopleToHouses();
-        ResetVisitedTownsfolk(); //These resets are required because the assets are persistent between runs.
-        ResetDeadTownsfolk();
+        ResetTownsfolk();       //This reset is required because the assets are persistent between runs.
         fadeSprite = blackLayer.GetComponent<SpriteRenderer>();
         textBacking.SetActive(false);
         ClearTownspersonPic();
@@ -85,7 +89,7 @@ public class TownManager : MonoBehaviour {
 
         dayTime += Time.deltaTime;
 
-        //TODO: Check if all dead or all angry
+        //TODO: Check if all angry
         //If so, speed up time to 3x as fast?
 
         if(dayTime >= MAX_DAY_TIME)
@@ -164,20 +168,12 @@ public class TownManager : MonoBehaviour {
         if (madeChoice || !day)
             return;
 
-        waitForNewHouse = false;
         ClearTextElements();
         textBacking.SetActive(true);
 
         SpriteRenderer tpRend = townspersonPic.GetComponent<SpriteRenderer>();
         tpRend.sprite = house.person.sprite;
  
-        if(house.person.visited)
-        {
-            currentHouse = null;
-            description.GetComponent<Text>().text = "Your knocking is met by a yell. GO AWAY!";
-            return;
-        }
-
         if(house.person.dead)
         {
             currentHouse = null;
@@ -186,8 +182,24 @@ public class TownManager : MonoBehaviour {
             return;
         }
 
+        if (house.person.gaveBoon)
+        {
+            currentHouse = null;
+            description.GetComponent<Text>().text = "There is nothing more this person can do for you.";
+            return;
+        }
+
+        if(house.person.visited)
+        {
+            currentHouse = null;
+            description.GetComponent<Text>().text = "Your knocking is met by a yell. GO AWAY!";
+            return;
+        }
+
+
         townspersonPic.GetComponent<SpriteRenderer>().sprite = house.person.sprite;
         description.GetComponent<Text>().text = house.person.description;
+        waitForNewHouse = false;
 
         for(int i=0; i< choiceTexts.Length; i++)
         {
@@ -214,6 +226,7 @@ public class TownManager : MonoBehaviour {
         {
             playerStats.AddBuff(currentHouse.person.buff);
             madeChoice = true;
+            currentHouse.person.gaveBoon = true;
             endDayCoroutine = StartCoroutine(EndDay(choice));
         }
         else
@@ -221,6 +234,22 @@ public class TownManager : MonoBehaviour {
             waitForNewHouse = true;
         }
 
+    }
+
+    public void Highlight(int choice)
+    {
+        if (madeChoice || waitForNewHouse)
+            return;
+
+        choiceTexts[choice].GetComponent<Text>().color = new Color(0, 1, 0);
+    }
+
+    public void UnHighlight(int choice)
+    {
+        if (madeChoice || waitForNewHouse)
+            return;
+
+        choiceTexts[choice].GetComponent<Text>().color = new Color(1, 1, 1);
     }
 
     public TownsPerson KillVillager()
@@ -263,11 +292,13 @@ public class TownManager : MonoBehaviour {
         }
     }
 
-    public void ResetDeadTownsfolk()
+    public void ResetTownsfolk()
     { 
         foreach(House h in houses)
         {
             h.person.dead = false;
+            h.person.visited = false;
+            h.person.gaveBoon = false;
         }
     }
     
