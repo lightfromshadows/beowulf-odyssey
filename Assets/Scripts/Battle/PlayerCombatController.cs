@@ -14,6 +14,8 @@ public class PlayerCombatController : CombatController {
     [SerializeField] BuffItem preciseBuff;
     [SerializeField] BuffItem heavyBuff;
 
+    [SerializeField] GameObject gameOverPanel;
+
     bool myTurn = true;
 
     public void QuickAttack()
@@ -93,6 +95,8 @@ public class PlayerCombatController : CombatController {
             else {
                 // TODO You dead!
                 Debug.Log("Player died :/");
+                gameOverPanel.SetActive(true);
+                return; // early exit
             }
         }
 
