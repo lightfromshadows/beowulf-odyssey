@@ -7,15 +7,10 @@ using UnityEngine.EventSystems;
 using System.Linq;
 
 
-//TODO: Add Townsperson name
-//TODO: Make response the large block
-//TODO: Increase house size
-//TODO: Finish clouds.
-
-
-
 public class TownManager : MonoBehaviour {
 
+    public AudioSource audioSource;
+    public AudioClip upgradeSound;
     public Sun sun;
     public SkyGradient sky;
     public GameObject blackLayer;
@@ -49,6 +44,8 @@ public class TownManager : MonoBehaviour {
     bool waitForNewHouse = false;
     private SpriteRenderer fadeSprite;
     Color fadeVal;
+
+    private int nextDeadString=0;
 
     private string[] nightStrings =
     {
@@ -194,7 +191,7 @@ public class TownManager : MonoBehaviour {
         if(house.person.dead)
         {
             currentHouse = null;
-            description.GetComponent<Text>().text = ChooseRandomStringFromArray(deadStrings);
+            description.GetComponent<Text>().text = ChooseNextDeadString();
             tpRend.sprite = null;
             return;
         }
@@ -265,6 +262,7 @@ public class TownManager : MonoBehaviour {
                 currentHouse.person.gaveBoon = true;
                 rewardText.GetComponent<Text>().text = "You received: " + currentHouse.person.reward;
             }
+            audioSource.PlayOneShot(upgradeSound);
             madeChoice = true;
             StartCoroutine(EndDay(choice));
         }
@@ -321,6 +319,15 @@ public class TownManager : MonoBehaviour {
     string ChooseRandomStringFromArray(string[] choices)
     {
         return choices[Random.Range(0, choices.Length)];
+    }
+
+    string ChooseNextDeadString()
+    {
+        nextDeadString++;
+        if (nextDeadString == deadStrings.Count())
+            nextDeadString = 0;
+
+        return deadStrings[nextDeadString];
     }
 
     public void ResetVisitedTownsfolk()
