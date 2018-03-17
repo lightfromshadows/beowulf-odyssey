@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: "I\u2019m the tanner, turning hides into bags, belts, and armor. What
     can I do for you?"
-  buff: {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
+  buff: {fileID: 11400000, guid: ac1aede346458424fa3ecf5d5d4d078f, type: 2}
   choice:
   - Leather sounds like it would be pretty useful for guarding against werewolf bites.
   - These are high quality! How much for some armor?
@@ -26,6 +26,7 @@ MonoBehaviour:
   - "Only the lord can promise such things and you look nothing like the lord. Get
     off my porch and pray you don\u2019t die a sinner!"
   chooseWisely: 1
-  dead: 0
-  visited: 1
+  dead: 1
+  visited: 0
+  gaveBoon: 0
   sprite: {fileID: 0}

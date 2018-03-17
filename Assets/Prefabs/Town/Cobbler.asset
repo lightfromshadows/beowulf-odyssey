@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae46f4e295e8547923fd095f78450a, type: 3}
+  m_Name: Cobbler
+  m_EditorClassIdentifier: 
+  description: "Shoes got a hole in them? I\u2019ll patch them right up! Mender of
+    soles, holes, and knotter of laces."
+  buff: {fileID: 11400000, guid: 84b8e96bde3a740feab8cdc7292e4ce3, type: 2}
+  choice:
+  - Mender of souls, I pray to you ever night. Am I saved?
+  - "My shoes need some mending for sure. I\u2019ve been walking for ages."
+  - My shoes could use a shining but not much else. How much will it cost?
+  responses:
+  - "You\u2019re funny, I like it. Here, your shoes look a bit worn. Take these, can\u2019t
+    have a hero such as yourself without a strong soul."
+  - "I can tell from your shoes that you\u2019ve been walking only ten miles or so.
+    A cobbler might beat shoes but he\u2019s not beat in the head!"
+  - "A pretty penny for a pretty shining, but you\u2019re in luck. I\u2019ve lowered
+    my prices to just 100 coins a shoe. Maybe next time you\u2019ll have something
+    more in your purse than lint."
+  chooseWisely: 0
+  dead: 0
+  visited: 0
+  gaveBoon: 0
+  sprite: {fileID: 0}

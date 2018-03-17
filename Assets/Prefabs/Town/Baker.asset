@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Welcome to my bakery! Baking bread and folding flour. How can I help
     you?
-  buff: {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
+  buff: {fileID: 11400000, guid: 74197543cc7d241ba809bb6708d3d4a0, type: 2}
   choice:
   - I was wondering if you could direct me to the werewolf?
   - Baking bread and folding flour, you do anything useful here?
@@ -29,4 +29,5 @@ MonoBehaviour:
   chooseWisely: 0
   dead: 0
   visited: 0
+  gaveBoon: 1
   sprite: {fileID: 21300000, guid: cc45c3c7bb05ac34d89730afd08ba9e4, type: 3}
