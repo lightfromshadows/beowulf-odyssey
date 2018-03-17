@@ -17,7 +17,7 @@ public class CombatAnimator : MonoBehaviour {
     }
 
     [SerializeField] CombatAnimation[] animations;
-    [SerializeField] Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] AudioSource audioSource;
 
     public void DoCombatAnimation(string name)
