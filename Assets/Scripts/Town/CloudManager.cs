@@ -25,7 +25,7 @@ public class CloudManager : MonoBehaviour {
         nextCloudSpawn -= Time.deltaTime;
         if(nextCloudSpawn < 0)
         {
-            nextCloudSpawn = Random.Range(4, 15);
+            nextCloudSpawn = Random.Range(5, 10);
             CreateCloud(-300);
 
         }

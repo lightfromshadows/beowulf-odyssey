@@ -24,6 +24,7 @@ public class TownManager : MonoBehaviour {
     public GameObject[] choiceTexts;
     public GameObject overnightText;
     public GameObject townspersonPic;
+
     [SerializeField] CharacterStatsObj playerStats;
     [SerializeField] TownsPerson[] people;
 
@@ -36,9 +37,9 @@ public class TownManager : MonoBehaviour {
     private const int HOUSE_X_MAX = 1700;
     private const int HOUSE_X_WOBBLE = 15;
     private const int HOUSE_Y_MIN = 410;
-    private const int HOUSE_Y_MAX = 680;
+    private const int HOUSE_Y_MAX = 550;
 
-    List<House> houses = new List<House>();
+    public List<House> houses;// = new List<House>();
 
     private Coroutine endDayCoroutine;
     bool day = true;
@@ -76,7 +77,7 @@ public class TownManager : MonoBehaviour {
         playerStats.Init();
 
         ClearTextElements();
-        CreateHouses();
+        //CreateHouses(); //Now creating houses by hand.
         AssignPeopleToHouses();
         ResetTownsfolk();       //This reset is required because the assets are persistent between runs.
         fadeSprite = blackLayer.GetComponent<SpriteRenderer>();
@@ -107,14 +108,15 @@ public class TownManager : MonoBehaviour {
         {
             //Set light fading.
             float a = 0;
-            if(dayTime/MAX_DAY_TIME < 0.5)
+            if(dayTime/MAX_DAY_TIME < 0.5)  //Caps it from 0.5 darkening to start, with none at noon.
             {
-                a = 0.75f - dayTime / MAX_DAY_TIME * 1.5f;
+                a = 0.5f - dayTime / MAX_DAY_TIME;
             }
             else
             {
-                a = (dayTime-MAX_DAY_TIME/2f) / MAX_DAY_TIME*1.5f;
+                a = (dayTime-MAX_DAY_TIME/2f) / MAX_DAY_TIME;
             }
+            a = a * 0.75f; //Was still too dark, so quick hack to lower the darkness.
             fadeVal = new Color(0, 0, 0, a);
             fadeSprite.color = fadeVal;
             sun.DayTimeTween = dayTime / MAX_DAY_TIME;
@@ -334,26 +336,28 @@ public class TownManager : MonoBehaviour {
 
     }
 
-    private void CreateHouses()
-    {
-        House housePreFab = Resources.Load<House>("House");
-        House house;
+    //Now creating houses by hand.
+    //......................................................
+    //private void CreateHouses()
+    //{
+    //    House housePreFab = Resources.Load<House>("House");
+    //    House house;
 
-        Vector2 pos = new Vector2();
+    //    Vector2 pos = new Vector2();
 
-        for (int personCount = 0; personCount < people.Length; personCount++)
-        {
-            house = Instantiate(housePreFab);
-            if (Random.Range(0, 2) == 1)
-                house.GetComponent<SpriteRenderer>().flipX = true;
-            house.town = this;
-            pos.x = (HOUSE_X_MAX - HOUSE_X_MIN) / people.Length * personCount + HOUSE_X_MIN;
-            pos.x += Random.Range(-HOUSE_X_WOBBLE, HOUSE_X_WOBBLE);
-            pos.y = Random.Range(HOUSE_Y_MIN, HOUSE_Y_MAX);
-            house.transform.position = pos;
-            houses.Add(house);
-        }
-    }
+    //    for (int personCount = 0; personCount < people.Length; personCount++)
+    //    {
+    //        house = Instantiate(housePreFab);
+    //        if (Random.Range(0, 2) == 1)
+    //            house.GetComponent<SpriteRenderer>().flipX = true;
+    //        house.town = this;
+    //        pos.x = (HOUSE_X_MAX - HOUSE_X_MIN) / people.Length * personCount + HOUSE_X_MIN;
+    //        pos.x += Random.Range(-HOUSE_X_WOBBLE, HOUSE_X_WOBBLE);
+    //        pos.y = Random.Range(HOUSE_Y_MIN, HOUSE_Y_MAX);
+    //        house.transform.position = pos;
+    //        houses.Add(house);
+    //    }
+    //}
 
     private void AssignPeopleToHouses()
     {
