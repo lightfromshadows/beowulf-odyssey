@@ -16,6 +16,10 @@ public class PlayerCombatController : CombatController {
 
     [SerializeField] GameObject gameOverPanel;
 
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip reviveSound;
+
+
     bool myTurn = true;
 
     public void QuickAttack()

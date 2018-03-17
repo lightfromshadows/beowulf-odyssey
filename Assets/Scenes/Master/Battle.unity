@@ -464,7 +464,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -599,7 +599,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -1132,7 +1132,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -1278,7 +1278,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -1938,7 +1938,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2115,7 +2115,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2280,7 +2280,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2483,7 +2483,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -2573,6 +2573,7 @@ GameObject:
   - component: {fileID: 893566323}
   - component: {fileID: 893566322}
   - component: {fileID: 893566321}
+  - component: {fileID: 893566324}
   m_Layer: 0
   m_Name: Werewolf
   m_TagString: Untagged
@@ -2594,6 +2595,9 @@ MonoBehaviour:
   myStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
   messagePrefab: {fileID: 1673398451472060, guid: c2e83e0982ac34956811da5da882c15c,
     type: 2}
+  audioSource: {fileID: 893566324}
+  hitSound: {fileID: 8300000, guid: aeac2cab746ae415d9c9e0a4eabb5a03, type: 3}
+  missSound: {fileID: 8300000, guid: 336269c37bd0e40d6b4b66dfc0ff280a, type: 3}
   playerController: {fileID: 1113577351}
   combatAnimator: {fileID: 893566322}
   gameOverPanel: {fileID: 1064185442}
@@ -2614,17 +2618,21 @@ MonoBehaviour:
     jumpPoint: {fileID: 1973738091}
     jumpTime: 0.35
     jumpPower: 120
+    audioClip: {fileID: 0}
   - name: return
     animTrigger: jump
     jumpPoint: {fileID: 78907383}
     jumpTime: 0.5
     jumpPower: 100
+    audioClip: {fileID: 0}
   - name: hurt
     animTrigger: hurt
     jumpPoint: {fileID: 1681519740}
     jumpTime: 0.1
     jumpPower: 10
+    audioClip: {fileID: 0}
   animator: {fileID: 1074137918}
+  audioSource: {fileID: 893566324}
 --- !u!4 &893566323
 Transform:
   m_ObjectHideFlags: 0
@@ -2640,6 +2648,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &893566324
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 893566320}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &909155134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2896,8 +2984,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e726ed1453d397d4290892ee88d4b883, type: 2}
   titleText: {fileID: 244779184}
   endingText: {fileID: 1489127841}
-  playerStats: {fileID: 0}
-  wolfStats: {fileID: 0}
+  playerStats: {fileID: 11400000, guid: dc3236c644351475c8a0a5b9a39dddc1, type: 2}
+  wolfStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
 --- !u!1 &1074137917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,6 +3087,7 @@ GameObject:
   - component: {fileID: 1113577350}
   - component: {fileID: 1113577349}
   - component: {fileID: 1113577351}
+  - component: {fileID: 1113577352}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3023,27 +3112,33 @@ MonoBehaviour:
     jumpPoint: {fileID: 790076093}
     jumpTime: 0.25
     jumpPower: 100
+    audioClip: {fileID: 0}
   - name: drop_attack
     animTrigger: attack
     jumpPoint: {fileID: 790076093}
     jumpTime: 0.1
     jumpPower: 0
+    audioClip: {fileID: 0}
   - name: return
     animTrigger: jump
     jumpPoint: {fileID: 1493579946}
     jumpTime: 0.5
     jumpPower: 50
+    audioClip: {fileID: 0}
   - name: hang
     animTrigger: jump
     jumpPoint: {fileID: 1278571031}
     jumpTime: 0.5
     jumpPower: 0
+    audioClip: {fileID: 8300000, guid: ff95cd19151994eb7acb063820532afe, type: 3}
   - name: hurt
     animTrigger: hurt
     jumpPoint: {fileID: 328253117}
     jumpTime: 0.1
     jumpPower: 20
+    audioClip: {fileID: 0}
   animator: {fileID: 567158647}
+  audioSource: {fileID: 1113577352}
 --- !u!4 &1113577350
 Transform:
   m_ObjectHideFlags: 0
@@ -3073,12 +3168,97 @@ MonoBehaviour:
   myStats: {fileID: 11400000, guid: dc3236c644351475c8a0a5b9a39dddc1, type: 2}
   messagePrefab: {fileID: 1673398451472060, guid: c2e83e0982ac34956811da5da882c15c,
     type: 2}
+  audioSource: {fileID: 1113577352}
+  hitSound: {fileID: 8300000, guid: 759a935a522e94ee4abc44bd5f1d00c4, type: 3}
+  missSound: {fileID: 8300000, guid: 336269c37bd0e40d6b4b66dfc0ff280a, type: 3}
   enemyController: {fileID: 893566321}
   combatAnimator: {fileID: 1113577349}
   quickBuff: {fileID: 11400000, guid: c5e4592ec946644f19117aee92145aaf, type: 2}
   preciseBuff: {fileID: 11400000, guid: 26ec91e60afc8453c8c7f1fadd3d64c4, type: 2}
   heavyBuff: {fileID: 11400000, guid: bf55dc2192392471b8c08553e5a93a96, type: 2}
   gameOverPanel: {fileID: 1064185442}
+  deathSound: {fileID: 0}
+  reviveSound: {fileID: 0}
+--- !u!82 &1113577352
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113577348}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &1214936290
 Prefab:
   m_ObjectHideFlags: 0
@@ -3134,7 +3314,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
@@ -3444,7 +3624,7 @@ Prefab:
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224390066399178230, guid: bfa30238b9d954edca67eb5bc4db2e01,
         type: 2}
