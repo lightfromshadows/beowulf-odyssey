@@ -5,11 +5,13 @@ using UnityEngine;
 public class Cloud : MonoBehaviour {
 
     private float speed;
-    private float destroyAt = 2200;
+    private float destroyAt = 3000;
 
 	// Use this for initialization
 	void Start () {
         speed = Random.Range(22, 60);
+        float y = Random.Range(950, 1150);
+        transform.position = new Vector2(transform.position.x, y);
 	}
 	
 	// Update is called once per frame
