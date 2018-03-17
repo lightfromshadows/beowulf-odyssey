@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 
 
@@ -18,7 +19,7 @@ public class TownManager : MonoBehaviour {
     [SerializeField] TownsPerson[] people;
 
 
-    private const float MAX_DAY_TIME = 90;
+    private const float MAX_DAY_TIME = 70;
     private float dayTime = 0;
     private House currentHouse;
 
@@ -60,7 +61,8 @@ public class TownManager : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         playerStats.Init();
 
         ClearTextElements();
@@ -118,9 +120,15 @@ public class TownManager : MonoBehaviour {
         if(choice < 0)
         {
             ClearTextElements();
+            ClearTownspersonPic();
             description.GetComponent<Text>().text = ChooseRandomStringFromArray(endDayStrings);
         }
 
+        var livePeople = from person in people where !person.dead select person;
+        if (livePeople.Count() == 1)
+            MonsterAttack();
+
+        textBacking.SetActive(true);        //Needed when player timed out without having clicked on anything.
         yield return new WaitForSeconds(8); //Time to read the result
         ClearTownspersonPic();
         textBacking.SetActive(false); 
@@ -144,7 +152,7 @@ public class TownManager : MonoBehaviour {
 
     }
 
-    public void MonsterAttackClicked()
+    public void MonsterAttack()
     {
         //TODO: Transition to combat!
         Debug.Log("FIGHT FIGHT FIGHT");
