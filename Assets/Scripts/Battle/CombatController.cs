@@ -15,19 +15,18 @@ public class CombatController : MonoBehaviour {
     }
 
 
-    public void Attack(float damage, float toHit)
+    public virtual void Attack(float damage, float toHit)
     {
         if (toHit > Random.Range(0f, 100f))
         {
-			FlashMessage(string.Format("-{0}!!", damage), Color.red);
-			myStats.Health -= damage;         
+            ChangeHealth(-damage);
         }
         else {
             FlashMessage("Miss!!!", Color.grey);
         }
     }
 
-    public void ChangeHealth(float health)
+    public virtual void ChangeHealth(float health)
     {
         if (health > 0f) {
             FlashMessage(string.Format("{0}!!", health), Color.green);

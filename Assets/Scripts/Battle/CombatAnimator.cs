@@ -9,13 +9,14 @@ public class CombatAnimator : MonoBehaviour {
     [System.Serializable]
     public struct CombatAnimation {
         public string name;
-        public AnimationClip clip;
+        public string animTrigger;
         public Transform jumpPoint;
         public float jumpTime;
         public float jumpPower;
     }
 
     [SerializeField] CombatAnimation[] animations;
+    [SerializeField] Animator animator;
 
     public void DoCombatAnimation(string name)
     {
@@ -34,7 +35,9 @@ public class CombatAnimator : MonoBehaviour {
         if (anim.jumpPoint) {
             var t = transform.DOJump(anim.jumpPoint.position, anim.jumpPower, 1, anim.jumpTime);
 
-             if (callback != null)
+            if (animator)
+                animator.SetTrigger(anim.animTrigger);
+            if (callback != null)
                  t.onComplete += callback;
             
         }

@@ -81,7 +81,7 @@ public class PlayerCombatController : CombatController {
     {
 		var passives = myStats.PassiveBuffs;
 
-        if (myStats.Health < 0f)
+        if (myStats.Health < float.Epsilon)
         {
 			var faith = from b in passives where b.name == "Faith" select b;
             if (faith.Count() > 0)
@@ -110,6 +110,19 @@ public class PlayerCombatController : CombatController {
             }
         }
 		myTurn = true;
+    }
+
+    public override void ChangeHealth(float health)
+    {
+        base.ChangeHealth(health);
+
+        if (health < 0f)
+        {
+            Debug.Log("Hurt");
+            combatAnimator.DoCombatAnimation("hurt", () => {
+                combatAnimator.DoCombatAnimation("return");   
+            });
+        }
     }
 
     public void UseItem(BuffItem item)
