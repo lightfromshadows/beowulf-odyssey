@@ -10,10 +10,16 @@ public class Cloud : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         speed = Random.Range(22, 60);
-        float y = Random.Range(950, 1150);
+        float y = Random.Range(930, 1150);
         transform.position = new Vector2(transform.position.x, y);
 	}
 	
+    public void SetXPos(float x)
+    {
+        Vector2 vec = new Vector2(x, transform.position.y);
+        transform.position = vec;
+    }
+
 	// Update is called once per frame
 	void Update () {
         float x = transform.position.x;
