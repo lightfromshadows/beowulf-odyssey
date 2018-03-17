@@ -28,7 +28,7 @@ MonoBehaviour:
   reward: leather armor.
   chooseWisely: 1
   dead: 0
-  visited: 1
+  visited: 0
   gaveBoon: 0
   epitaph: 'RIP: Ripped In Pieces'
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f7fec718d9b4d8d43b452c16523f2c3d, type: 3}
