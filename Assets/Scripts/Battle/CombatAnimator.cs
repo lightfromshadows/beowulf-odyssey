@@ -13,10 +13,12 @@ public class CombatAnimator : MonoBehaviour {
         public Transform jumpPoint;
         public float jumpTime;
         public float jumpPower;
+        public AudioClip audioClip;
     }
 
     [SerializeField] CombatAnimation[] animations;
-    [SerializeField] Animator animator;
+    [SerializeField] public Animator animator;
+    [SerializeField] AudioSource audioSource;
 
     public void DoCombatAnimation(string name)
     {
@@ -35,6 +37,8 @@ public class CombatAnimator : MonoBehaviour {
         if (anim.jumpPoint) {
             var t = transform.DOJump(anim.jumpPoint.position, anim.jumpPower, 1, anim.jumpTime);
 
+            if (audioSource && anim.audioClip)
+                audioSource.PlayOneShot(anim.audioClip);
             if (animator)
                 animator.SetTrigger(anim.animTrigger);
             if (callback != null)

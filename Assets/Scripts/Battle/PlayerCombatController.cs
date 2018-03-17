@@ -16,6 +16,10 @@ public class PlayerCombatController : CombatController {
 
     [SerializeField] GameObject gameOverPanel;
 
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip reviveSound;
+
+
     bool myTurn = true;
 
     public void QuickAttack()
@@ -91,11 +95,14 @@ public class PlayerCombatController : CombatController {
                 // Very special case
                 myStats.ConsumeItem(faith.First());
                 ChangeHealth(myStats.MaxHealth);
+                audioSource.PlayOneShot(reviveSound);
             }
             else {
                 // TODO You dead!
                 Debug.Log("Player died :/");
                 gameOverPanel.SetActive(true);
+                audioSource.PlayOneShot(deathSound);
+                combatAnimator.animator.SetBool("dead", true);
                 return; // early exit
             }
         }

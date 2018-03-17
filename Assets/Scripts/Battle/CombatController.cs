@@ -7,6 +7,11 @@ public class CombatController : MonoBehaviour {
     [SerializeField] protected CharacterStatsObj myStats;
     [SerializeField] GameObject messagePrefab;
 
+    [SerializeField] protected AudioSource audioSource;
+
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip missSound;
+
     public void FlashMessage(string message, Color color)
     {
         var go = Instantiate(messagePrefab) as GameObject;
@@ -20,9 +25,11 @@ public class CombatController : MonoBehaviour {
         if (toHit > Random.Range(0f, 100f))
         {
             ChangeHealth(-damage);
+            audioSource.PlayOneShot(hitSound);
         }
         else {
             FlashMessage("Miss!!!", Color.grey);
+            audioSource.PlayOneShot(missSound);
         }
     }
 
