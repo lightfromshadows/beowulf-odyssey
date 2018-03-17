@@ -9,6 +9,7 @@ public class Tombstone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] TownsPerson person;
     [SerializeField] Text title;
     [SerializeField] Text epitaph;
+    [SerializeField] Image headstone;
 
     [SerializeField] new Collider2D collider;
 
@@ -20,14 +21,22 @@ public class Tombstone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        title.enabled = true;
-        epitaph.enabled = true;
+        if (person.dead)
+        {
+            title.enabled = true;
+            epitaph.enabled = true;
+        }
     }
 
     // Use this for initialization
     void Start () {
         title.text = person.name;
         epitaph.text = person.epitaph;
-
 	}
+
+    void Update()
+    {
+        headstone.enabled = person.dead;
+    }
+
 }
