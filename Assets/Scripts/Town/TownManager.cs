@@ -35,6 +35,7 @@ public class TownManager : MonoBehaviour {
     private Coroutine endDayCoroutine;
     bool day = true;
     bool madeChoice = false;
+    bool waitForNewHouse = false;
     private SpriteRenderer fadeSprite;
     Color fadeVal;
 
@@ -163,6 +164,7 @@ public class TownManager : MonoBehaviour {
         if (madeChoice || !day)
             return;
 
+        waitForNewHouse = false;
         ClearTextElements();
         textBacking.SetActive(true);
 
@@ -198,7 +200,7 @@ public class TownManager : MonoBehaviour {
 
     public void ChoiceClicked(int choice)
     {
-        if (madeChoice) //Prevent clicks mattering on result text.
+        if (madeChoice || waitForNewHouse) //Prevent clicks mattering on result text.
             return;
 
         currentHouse.person.visited = true;
@@ -213,6 +215,10 @@ public class TownManager : MonoBehaviour {
             playerStats.AddBuff(currentHouse.person.buff);
             madeChoice = true;
             endDayCoroutine = StartCoroutine(EndDay(choice));
+        }
+        else
+        {
+            waitForNewHouse = true;
         }
 
     }
