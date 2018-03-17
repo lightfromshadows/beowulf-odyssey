@@ -18,12 +18,19 @@ public class Inventory : MonoBehaviour {
 
     public void Start()
     {
+        playerStats.InventoryUpdated += OnInventoryUpdate;
+        OnInventoryUpdate();
+    }
+
+    public void OnInventoryUpdate()
+    {
         if (playerStats.HasBuff(buff))
         {
             button.interactable = true;
             image.sprite = buff.sprite;
         }
-        else {
+        else
+        {
             image.sprite = noItem;
             button.interactable = false;
         }
@@ -31,6 +38,7 @@ public class Inventory : MonoBehaviour {
 
     public void OnClick() {
         // TODO use the item!
+        playerController.UseItem(buff);
     }
 
     public void OnSelect()

@@ -89,16 +89,23 @@ public class CharacterStatsObj : ScriptableObject
     public void AddBuff(BuffItem item)
     {
         buffs.Add(item);
+
+        InventoryUpdated();
     }
 
     public void ConsumeItem(BuffItem item)
     {
         // TODO verify and notify that item is removed
         buffs.Remove(item);
+
+        InventoryUpdated();
     }
 
     public bool HasBuff(BuffItem item)
     {
         return buffs.Contains(item);
     }
+
+    private static void Default() {}
+    public System.Action InventoryUpdated = Default;
 }
