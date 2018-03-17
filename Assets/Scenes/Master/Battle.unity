@@ -1793,7 +1793,6 @@ GameObject:
   - component: {fileID: 647909840}
   - component: {fileID: 647909839}
   - component: {fileID: 647909838}
-  - component: {fileID: 647909837}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1801,30 +1800,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &647909837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 647909836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865b96297613942d4a6dc1846a29bbe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: dc3236c644351475c8a0a5b9a39dddc1, type: 2}
-  wolfStats: {fileID: 11400000, guid: c7a858f0b907645999419473afd85b8f, type: 2}
-  buffs:
-  - {fileID: 11400000, guid: 9caf1ffbe8ff1447cbd203a322d19002, type: 2}
-  - {fileID: 11400000, guid: 64f7d6b9f62e247bc9bac758a032a8d4, type: 2}
-  - {fileID: 11400000, guid: ac1aede346458424fa3ecf5d5d4d078f, type: 2}
-  - {fileID: 11400000, guid: 74197543cc7d241ba809bb6708d3d4a0, type: 2}
-  - {fileID: 11400000, guid: 59c6e3f3cc8de44eeb736ac65d2cc180, type: 2}
-  - {fileID: 11400000, guid: 84b8e96bde3a740feab8cdc7292e4ce3, type: 2}
-  - {fileID: 11400000, guid: 669ce1c8b898d4147b4819a5f934b0d1, type: 2}
-  - {fileID: 11400000, guid: dcfef662a4be2445288194263a6890d7, type: 2}
-  - {fileID: 11400000, guid: 474028a92f15945c28cc53e8c8f9177f, type: 2}
-  - {fileID: 11400000, guid: f9f9ecfe771c94d3bb8c11806d81ec6e, type: 2}
 --- !u!81 &647909838
 AudioListener:
   m_ObjectHideFlags: 0
