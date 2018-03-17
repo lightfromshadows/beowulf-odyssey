@@ -25,7 +25,7 @@ MonoBehaviour:
   - "Course! Just got a bunch of silver today. Too much actually, can\u2019t store
     it all. Here, have some."
   chooseWisely: 2
-  dead: 0
+  dead: 1
   visited: 0
   gaveBoon: 0
   epitaph: "Died of old age \u2013 JK, they were killed by a werewolf."

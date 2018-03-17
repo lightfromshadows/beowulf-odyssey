@@ -24,7 +24,7 @@ MonoBehaviour:
   - Good, good. Here. To begin your journey into the art of alchemy, this potion will
     help you when times are hard, when the elements may lend you their strength.
   chooseWisely: 2
-  dead: 0
+  dead: 1
   visited: 0
   gaveBoon: 0
   epitaph: Click to win

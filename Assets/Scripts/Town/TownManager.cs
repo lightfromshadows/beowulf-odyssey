@@ -20,17 +20,19 @@ public class TownManager : MonoBehaviour {
     public SkyGradient sky;
     public GameObject blackLayer;
     public GameObject textBacking;
+    public GameObject graveyard;
     public GameObject tpName;
     public GameObject description;
     public GameObject[] choiceTexts;
     public GameObject overnightText;
+    public GameObject rewardText;
     public GameObject townspersonPic;
 
     [SerializeField] CharacterStatsObj playerStats;
     [SerializeField] TownsPerson[] people;
 
 
-    private const float MAX_DAY_TIME = 70;
+    private const float MAX_DAY_TIME = 10;
     private float dayTime = 0;
     private House currentHouse;
 
@@ -42,7 +44,6 @@ public class TownManager : MonoBehaviour {
 
     public List<House> houses;// = new List<House>();
 
-    private Coroutine endDayCoroutine;
     bool day = true;
     bool madeChoice = false;
     bool waitForNewHouse = false;
@@ -101,7 +102,7 @@ public class TownManager : MonoBehaviour {
         {
             if(!madeChoice)
             {
-                endDayCoroutine = StartCoroutine(EndDay(-1));
+                StartCoroutine(EndDay(-1));
                 day = false;
             }
         }
@@ -117,7 +118,7 @@ public class TownManager : MonoBehaviour {
             {
                 a = (dayTime-MAX_DAY_TIME/2f) / MAX_DAY_TIME;
             }
-            a = a * 0.75f; //Was still too dark, so quick hack to lower the darkness.
+            a = a * 0.5f; //Was still too dark, so quick hack to lower the darkness.
             fadeVal = new Color(0, 0, 0, a);
             fadeSprite.color = fadeVal;
             sun.DayTimeTween = dayTime / MAX_DAY_TIME;
@@ -146,6 +147,7 @@ public class TownManager : MonoBehaviour {
 
         textBacking.SetActive(true);        //Needed when player timed out without having clicked on anything.
         yield return new WaitForSeconds(8); //Time to read the result
+        graveyard.SetActive(false);
         ClearTownspersonPic();
         textBacking.SetActive(false); 
         day = false;
@@ -165,6 +167,7 @@ public class TownManager : MonoBehaviour {
         madeChoice = false;
         ClearTextElements();
         ResetVisitedTownsfolk();
+        graveyard.SetActive(true);
 
     }
 
@@ -242,7 +245,8 @@ public class TownManager : MonoBehaviour {
             playerStats.AddBuff(currentHouse.person.buff);
             madeChoice = true;
             currentHouse.person.gaveBoon = true;
-            endDayCoroutine = StartCoroutine(EndDay(choice));
+            rewardText.GetComponent<Text>().text = "You received: " + "A boot to the head.";
+            StartCoroutine(EndDay(choice));
         }
         else
         {
@@ -327,6 +331,7 @@ public class TownManager : MonoBehaviour {
     {
         tpName.GetComponent<Text>().text = "";
         description.GetComponent<Text>().text = "";
+        rewardText.GetComponent<Text>().text = "";
         overnightText.GetComponent<Text>().text = "";
 
         for (int i = 0; i < choiceTexts.Length; i++)

@@ -27,7 +27,7 @@ MonoBehaviour:
   - "Sorry, but it looks like you don\u2019t have a coin on you. Hard to come by on
     these hard times. Try knocking on someone else\u2019s door."
   chooseWisely: 0
-  dead: 0
+  dead: 1
   visited: 0
   gaveBoon: 0
   epitaph: The bits we could find are buried here.

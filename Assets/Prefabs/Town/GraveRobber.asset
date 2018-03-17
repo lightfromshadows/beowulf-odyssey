@@ -24,7 +24,7 @@ MonoBehaviour:
   - "...I\u2019ve been looking for a new apprentice. Sure, why not, you won\u2019t
     die anytime soon right? The last one turned out to be full of worms."
   chooseWisely: 2
-  dead: 0
+  dead: 1
   visited: 0
   gaveBoon: 0
   epitaph: 'My last words: AAAAAAAAHHHHHHH!!!'

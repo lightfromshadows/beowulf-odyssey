@@ -26,7 +26,7 @@ MonoBehaviour:
   - "No sorry about it \u2013 I\u2019m already up \u2013 now get out! You\u2019re
     scaring away the game!"
   chooseWisely: 1
-  dead: 0
+  dead: 1
   visited: 0
   gaveBoon: 0
   epitaph: Look behind you

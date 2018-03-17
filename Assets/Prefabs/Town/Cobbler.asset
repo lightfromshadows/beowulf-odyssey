@@ -27,7 +27,7 @@ MonoBehaviour:
     my prices to just 100 coins a shoe. Maybe next time you\u2019ll have something
     more in your purse than lint."
   chooseWisely: 0
-  dead: 0
+  dead: 1
   visited: 0
   gaveBoon: 0
   epitaph: The werewolf was real nice about killing me.
