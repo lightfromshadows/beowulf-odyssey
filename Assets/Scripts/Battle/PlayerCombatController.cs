@@ -22,6 +22,11 @@ public class PlayerCombatController : CombatController {
 
     bool myTurn = true;
 
+    private void Start()
+    {
+        myStats.Health = myStats.MaxHealth;
+    }
+
     public void QuickAttack()
     {
         if (!myTurn) return;
