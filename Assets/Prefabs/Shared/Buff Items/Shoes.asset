@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   description: A solid stance is all a hero needs to hit often -  that and skill.
-  sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
+  sprite: {fileID: 21300004, guid: f878fa44b3fc64787ab71c02e59bd4c7, type: 3}
   passive: 1
   consumable: 0
   powerUp: 0

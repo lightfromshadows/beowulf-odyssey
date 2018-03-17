@@ -49,15 +49,15 @@ public class CharacterStatsObj : ScriptableObject
 
     public void Init()
     {
+        PrepareForBattle();
+        buffs.Clear();
+    }
+
+    public void PrepareForBattle()
+    {
         _health = MaxHealth;
         _hitChance = defaultStats.hitChance;
         _power = defaultStats.power;
-        foreach (var b in PassiveBuffs)
-        {
-            _hitChance += b.hitUp;
-            _power += b.powerUp;
-        }
-        buffs.Clear();
     }
 
     public float MaxHealth {

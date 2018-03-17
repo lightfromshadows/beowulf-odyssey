@@ -24,7 +24,7 @@ public class PlayerCombatController : CombatController {
 
     private void Start()
     {
-        myStats.Health = myStats.MaxHealth;
+        myStats.PrepareForBattle();
     }
 
     public void QuickAttack()

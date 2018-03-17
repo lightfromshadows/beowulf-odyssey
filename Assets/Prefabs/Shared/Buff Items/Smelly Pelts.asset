@@ -14,7 +14,7 @@ MonoBehaviour:
   target: 0
   description: Werewolf's accuracy is decreased by 25% for all of combat... it's kind
     of sad T_T
-  sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
+  sprite: {fileID: 21300000, guid: f878fa44b3fc64787ab71c02e59bd4c7, type: 3}
   passive: 0
   consumable: 1
   powerUp: 0
