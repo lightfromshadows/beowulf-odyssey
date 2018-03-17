@@ -2416,6 +2416,7 @@ GameObject:
   - component: {fileID: 1064185443}
   - component: {fileID: 1064185445}
   - component: {fileID: 1064185444}
+  - component: {fileID: 1064185446}
   m_Layer: 5
   m_Name: You Dead Panel
   m_TagString: Untagged
@@ -2477,6 +2478,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064185442}
+--- !u!114 &1064185446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1064185442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a52acc0c35be4a969d1e9c922b3f98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loseMessage: You have been slain
+  winMessage: You are victorious
+  townsPeople: []
+  titleText: {fileID: 0}
+  endingText: {fileID: 0}
 --- !u!1 &1101749951
 GameObject:
   m_ObjectHideFlags: 0
