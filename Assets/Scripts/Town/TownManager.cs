@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -154,8 +155,7 @@ public class TownManager : MonoBehaviour {
 
     public void MonsterAttack()
     {
-        //TODO: Transition to combat!
-        Debug.Log("FIGHT FIGHT FIGHT");
+        SceneManager.LoadScene("Battle");
     }
 
     public void HouseClicked(House house)
