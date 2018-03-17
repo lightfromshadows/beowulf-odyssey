@@ -79,6 +79,7 @@ public class EndingPanel : MonoBehaviour {
         titleText.text = winMessage;
 
         soundtrack.Stop();
+        soundtrack.loop = false;
         soundtrack.clip = winClip;
         soundtrack.Play();
     }
@@ -97,6 +98,7 @@ public class EndingPanel : MonoBehaviour {
         titleText.text = loseMessage;
 
         soundtrack.Stop();
+        soundtrack.loop = false;
         soundtrack.clip = loseClip;
         soundtrack.Play();
     }
