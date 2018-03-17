@@ -7,8 +7,10 @@ using UnityEngine.EventSystems;
 using System.Linq;
 
 
-//TODO: Define highlight and response colors.
-//TODO: Finish clouds
+//TODO: Add Townsperson name
+//TODO: Make response the large block
+//TODO: Increase house size
+//TODO: Finish clouds.
 
 
 
@@ -17,6 +19,7 @@ public class TownManager : MonoBehaviour {
     public Sun sun;
     public GameObject blackLayer;
     public GameObject textBacking;
+    public GameObject tpName;
     public GameObject description;
     public GameObject[] choiceTexts;
     public GameObject overnightText;
@@ -130,9 +133,12 @@ public class TownManager : MonoBehaviour {
             description.GetComponent<Text>().text = ChooseRandomStringFromArray(endDayStrings);
         }
 
-        var livePeople = from person in people where !person.dead select person;
+        var livePeople = from person in people where !person.dead select person; //Everyone dead but one, go to the fight.
         if (livePeople.Count() == 1)
-            MonsterAttack();
+        {
+            SceneManager.LoadScene("Battle");
+            yield break;
+        }
 
         textBacking.SetActive(true);        //Needed when player timed out without having clicked on anything.
         yield return new WaitForSeconds(8); //Time to read the result
@@ -160,6 +166,9 @@ public class TownManager : MonoBehaviour {
 
     public void MonsterAttack()
     {
+        if (madeChoice || !day)
+            return;
+
         SceneManager.LoadScene("Battle");
     }
 
@@ -185,6 +194,7 @@ public class TownManager : MonoBehaviour {
         if (house.person.gaveBoon)
         {
             currentHouse = null;
+            tpName.GetComponent<Text>().text = house.person.name;
             description.GetComponent<Text>().text = "There is nothing more this person can do for you.";
             return;
         }
@@ -192,11 +202,13 @@ public class TownManager : MonoBehaviour {
         if(house.person.visited)
         {
             currentHouse = null;
+            tpName.GetComponent<Text>().text = house.person.name;
             description.GetComponent<Text>().text = "Your knocking is met by a yell. GO AWAY!";
             return;
         }
 
 
+        tpName.GetComponent<Text>().text = house.person.name;
         townspersonPic.GetComponent<SpriteRenderer>().sprite = house.person.sprite;
         description.GetComponent<Text>().text = house.person.description;
         waitForNewHouse = false;
@@ -218,9 +230,8 @@ public class TownManager : MonoBehaviour {
         currentHouse.person.visited = true;
 
         ClearTextElements();
-        choiceTexts[0].GetComponent<Text>().text = currentHouse.person.choice[choice];
-        choiceTexts[1].GetComponent<Text>().text = currentHouse.person.responses[choice];
-        choiceTexts[1].GetComponent<Text>().color = new Color(1, 0, 0);
+        tpName.GetComponent<Text>().text = currentHouse.person.name;
+        description.GetComponent<Text>().text = currentHouse.person.responses[choice];
 
         if(choice == currentHouse.person.chooseWisely)
         {
@@ -310,6 +321,7 @@ public class TownManager : MonoBehaviour {
 
     public void ClearTextElements() //Resets contents and color.
     {
+        tpName.GetComponent<Text>().text = "";
         description.GetComponent<Text>().text = "";
         overnightText.GetComponent<Text>().text = "";
 
