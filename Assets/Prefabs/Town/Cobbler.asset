@@ -26,8 +26,9 @@ MonoBehaviour:
   - "A pretty penny for a pretty shining, but you\u2019re in luck. I\u2019ve lowered
     my prices to just 100 coins a shoe. Maybe next time you\u2019ll have something
     more in your purse than lint."
+  reward: a pair of shoes!
   chooseWisely: 0
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: The werewolf was real nice about killing me.

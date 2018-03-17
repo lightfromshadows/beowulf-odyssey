@@ -26,8 +26,9 @@ MonoBehaviour:
     to the Blacksmith that way or he\u2019ll cut your lips off!"
   - "Sorry, but it looks like you don\u2019t have a coin on you. Hard to come by on
     these hard times. Try knocking on someone else\u2019s door."
+  reward: a loaf of bread!
   chooseWisely: 0
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: The bits we could find are buried here.

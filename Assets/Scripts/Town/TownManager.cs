@@ -32,7 +32,7 @@ public class TownManager : MonoBehaviour {
     [SerializeField] TownsPerson[] people;
 
 
-    private const float MAX_DAY_TIME = 10;
+    private const float MAX_DAY_TIME = 60;
     private float dayTime = 0;
     private House currentHouse;
 
@@ -139,14 +139,15 @@ public class TownManager : MonoBehaviour {
         }
 
         var livePeople = from person in people where !person.dead select person; //Everyone dead but one, go to the fight.
+
+
+        textBacking.SetActive(true);        //Needed when player timed out without having clicked on anything.
+        yield return new WaitForSeconds(8); //Time to read the result
         if (livePeople.Count() == 1)
         {
             SceneManager.LoadScene("Battle");
             yield break;
         }
-
-        textBacking.SetActive(true);        //Needed when player timed out without having clicked on anything.
-        yield return new WaitForSeconds(8); //Time to read the result
         graveyard.SetActive(false);
         ClearTownspersonPic();
         textBacking.SetActive(false); 
@@ -214,7 +215,6 @@ public class TownManager : MonoBehaviour {
             return;
         }
 
-
         tpName.GetComponent<Text>().text = house.person.name;
         townspersonPic.GetComponent<SpriteRenderer>().sprite = house.person.sprite;
         description.GetComponent<Text>().text = house.person.description;
@@ -240,12 +240,32 @@ public class TownManager : MonoBehaviour {
         tpName.GetComponent<Text>().text = currentHouse.person.name;
         description.GetComponent<Text>().text = currentHouse.person.responses[choice];
 
+        string adjective = "";
         if(choice == currentHouse.person.chooseWisely)
         {
-            playerStats.AddBuff(currentHouse.person.buff);
+            var deadPeople = from person in people where person.dead && !person.gaveBoon select person;
+
+            if (currentHouse.person.name == "GraveRobber" && deadPeople.Count() > 0 && Random.Range(0, 1) == 0)
+            {
+
+                Debug.Log("Dead Count: " + deadPeople.Count());
+                //Handle taking stuff from the dead person.
+                TownsPerson p = deadPeople.ElementAt(Random.Range(0, deadPeople.Count()));
+                playerStats.AddBuff(p.buff);
+                p.gaveBoon = true;
+                rewardText.GetComponent<Text>().text = "You received: " + p.reward + " (gross)";
+
+                //But also handle the grave robber.
+                currentHouse.person.gaveBoon = true;
+
+            }
+            else
+            {
+                playerStats.AddBuff(currentHouse.person.buff);
+                currentHouse.person.gaveBoon = true;
+                rewardText.GetComponent<Text>().text = "You received: " + currentHouse.person.reward;
+            }
             madeChoice = true;
-            currentHouse.person.gaveBoon = true;
-            rewardText.GetComponent<Text>().text = "You received: " + "A boot to the head.";
             StartCoroutine(EndDay(choice));
         }
         else

@@ -23,8 +23,9 @@ MonoBehaviour:
   - "Because I\u2019m good at what I do kid."
   - "...I\u2019ve been looking for a new apprentice. Sure, why not, you won\u2019t
     die anytime soon right? The last one turned out to be full of worms."
+  reward: a shovel...?
   chooseWisely: 2
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: 'My last words: AAAAAAAAHHHHHHH!!!'

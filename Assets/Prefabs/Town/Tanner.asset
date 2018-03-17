@@ -25,9 +25,10 @@ MonoBehaviour:
     It\u2019ll do you good."
   - "Only the lord can promise such things and you look nothing like the lord. Get
     off my porch and pray you don\u2019t die a sinner!"
+  reward: leather armor.
   chooseWisely: 1
-  dead: 1
-  visited: 0
+  dead: 0
+  visited: 1
   gaveBoon: 0
   epitaph: 'RIP: Ripped In Pieces'
   sprite: {fileID: 0}

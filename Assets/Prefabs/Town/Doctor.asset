@@ -26,8 +26,9 @@ MonoBehaviour:
     than I thought. Get out or you\u2019ll spread your idiocy to the rest of us."
   - "Your skin is oily and your breath smells terrible. You\u2019re fine. Now leave,
     I\u2019m busy."
+  reward: a health potion!
   chooseWisely: 0
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: Mother, daughter, sister, grandmother, godmother, fairy-godmother

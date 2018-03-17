@@ -23,8 +23,9 @@ MonoBehaviour:
   - THE BOUNDERIES OF ELEMENTS ARE AN ILLUSION. LEAVE NON-BELIEVER!
   - Good, good. Here. To begin your journey into the art of alchemy, this potion will
     help you when times are hard, when the elements may lend you their strength.
+  reward: a syrum of regeneration!
   chooseWisely: 2
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: Click to win

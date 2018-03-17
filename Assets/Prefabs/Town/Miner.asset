@@ -24,8 +24,9 @@ MonoBehaviour:
     of all that paper shit."
   - "Course! Just got a bunch of silver today. Too much actually, can\u2019t store
     it all. Here, have some."
+  reward: a bar of silver!
   chooseWisely: 2
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: "Died of old age \u2013 JK, they were killed by a werewolf."

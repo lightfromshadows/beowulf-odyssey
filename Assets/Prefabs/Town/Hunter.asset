@@ -25,8 +25,9 @@ MonoBehaviour:
     you up in the night. Here, take some, it\u2019ll keep you alert and awake."
   - "No sorry about it \u2013 I\u2019m already up \u2013 now get out! You\u2019re
     scaring away the game!"
+  reward: smelly pelts!
   chooseWisely: 1
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: Look behind you

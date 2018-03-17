@@ -24,8 +24,9 @@ MonoBehaviour:
     elsewhere.
   - It cost the lives of saints and the tears of widows. Be gone from this holy ground
     for you soil it with your venomous questions.
+  reward: a blessing!
   chooseWisely: 0
-  dead: 1
+  dead: 0
   visited: 0
   gaveBoon: 0
   epitaph: What even is death really?
