@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 1
   description: Damages Werewolf by 100 per turn, like axe body spray.
-  sprite: {fileID: 21300000, guid: 7935d69f6834749fab44b8488e4e7600, type: 3}
+  sprite: {fileID: 21300010, guid: f878fa44b3fc64787ab71c02e59bd4c7, type: 3}
   passive: 1
   consumable: 0
   powerUp: 0
