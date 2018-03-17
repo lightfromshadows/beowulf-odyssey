@@ -30,5 +30,5 @@ MonoBehaviour:
   dead: 0
   visited: 0
   gaveBoon: 0
-  epitaph: 
+  epitaph: The bits we could find are buried here.
   sprite: {fileID: 21300000, guid: cc45c3c7bb05ac34d89730afd08ba9e4, type: 3}

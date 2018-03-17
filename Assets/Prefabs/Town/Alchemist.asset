@@ -27,4 +27,5 @@ MonoBehaviour:
   dead: 0
   visited: 0
   gaveBoon: 0
-  sprite: {fileID: 0}
+  epitaph: Click to win
+  sprite: {fileID: 21300000, guid: 0e71f3a21c71e4ca3aad0116e4df33a9, type: 3}

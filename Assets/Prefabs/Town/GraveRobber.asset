@@ -27,4 +27,5 @@ MonoBehaviour:
   dead: 0
   visited: 0
   gaveBoon: 0
-  sprite: {fileID: 0}
+  epitaph: 'My last words: AAAAAAAAHHHHHHH!!!'
+  sprite: {fileID: 21300000, guid: 4e08cafe2e5fd47d8a39e67fe1ad9e49, type: 3}

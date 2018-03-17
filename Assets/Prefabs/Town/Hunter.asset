@@ -29,4 +29,5 @@ MonoBehaviour:
   dead: 0
   visited: 0
   gaveBoon: 0
+  epitaph: Look behind you
   sprite: {fileID: 21300000, guid: 6f12ff70a8dd85f4eb8bb26480cb148c, type: 3}
