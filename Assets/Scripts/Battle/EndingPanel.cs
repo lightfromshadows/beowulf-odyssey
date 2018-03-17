@@ -14,13 +14,29 @@ public class EndingPanel : MonoBehaviour {
     [SerializeField] Text titleText;
     [SerializeField] Text endingText;
 
+    [SerializeField] CharacterStatsObj playerStats;
+    [SerializeField] CharacterStatsObj wolfStats;
 
     private void OnEnable()
     {
+
+        if (wolfStats.Health <= 0f)
+        {
+            PlayerWins();
+        }
+        else {
+            WolfWins();
+        }
+
+    }
+
+    void PlayerWins()
+    {
         var livePeople = from person in townsPeople where !person.dead select person;
 
-        switch (livePeople.Count()) {
-            case 10 :
+        switch (livePeople.Count())
+        {
+            case 10:
                 endingText.text = "Congrats you saved the village! Zero casualties! Hold your head high, call yourself a hero, and hope the towns people don’t burn you at the stake for witchcraft.";
                 break;
             case 9:
@@ -54,10 +70,26 @@ public class EndingPanel : MonoBehaviour {
                 endingText.text = "To be determined";
                 break;
         }
+
+        titleText.text = winMessage;
+    }
+
+    void WolfWins()
+    {
+        string[] endings = new string[]
+        {
+            "You died! Throw yourself a party!",
+            "Dying is the only way you learn.",
+            "Did you hear a fly when you died, or was that just me?",
+            "The village grave yard is not for you. The ground you fall upon is where you stay."
+        };
+
+        endingText.text = endings[Random.Range(0, endings.Length)];
+        titleText.text = loseMessage;
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("MainMenu");
     }
 }

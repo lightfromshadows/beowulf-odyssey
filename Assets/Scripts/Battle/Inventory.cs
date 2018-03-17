@@ -30,16 +30,16 @@ public class Inventory : MonoBehaviour {
     }
 
     public void OnClick() {
-        
+        // TODO use the item!
     }
 
     public void OnSelect()
     {
-        
+        descriptionText.text = buff.description;
     }
 
     public void OnDeselect()
     {
-        
+        descriptionText.text = "";
     }
 }
