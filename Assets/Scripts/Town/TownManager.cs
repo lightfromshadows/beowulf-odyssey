@@ -27,7 +27,7 @@ public class TownManager : MonoBehaviour {
     [SerializeField] TownsPerson[] people;
 
 
-    private const float MAX_DAY_TIME = 60;
+    private const float MAX_DAY_TIME = 20;
     private float dayTime = 0;
     private House currentHouse;
 
@@ -237,7 +237,6 @@ public class TownManager : MonoBehaviour {
         tpName.GetComponent<Text>().text = currentHouse.person.name;
         description.GetComponent<Text>().text = currentHouse.person.responses[choice];
 
-        string adjective = "";
         if(choice == currentHouse.person.chooseWisely)
         {
             var deadPeople = from person in people where person.dead && !person.gaveBoon select person;

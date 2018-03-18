@@ -51,6 +51,8 @@ public class CharacterStatsObj : ScriptableObject
     {
         PrepareForBattle();
         buffs.Clear();
+
+        InventoryUpdated = Default;
     }
 
     public void PrepareForBattle()
