@@ -931,7 +931,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: daae83cc5ebd48d4b9c42aeaf86e8ff0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.674
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1823,6 +1823,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 780457468}
   upgradeSound: {fileID: 8300000, guid: 404bc22a280cf460ead2f1020686c5bb, type: 3}
+  doorKnockSound: {fileID: 8300000, guid: a436b29f680a26f45a3691ba443d6024, type: 3}
+  doorSlamSound: {fileID: 8300000, guid: bc08285dff1eeec48895dfa7c19eaaaa, type: 3}
   sun: {fileID: 1162925010}
   sky: {fileID: 761498064}
   blackLayer: {fileID: 1614425417}

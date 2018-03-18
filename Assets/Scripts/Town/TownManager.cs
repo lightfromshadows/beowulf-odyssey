@@ -11,6 +11,8 @@ public class TownManager : MonoBehaviour {
 
     public AudioSource audioSource;
     public AudioClip upgradeSound;
+    public AudioClip doorKnockSound;
+    public AudioClip doorSlamSound;
     public Sun sun;
     public SkyGradient sky;
     public GameObject blackLayer;
@@ -193,6 +195,7 @@ public class TownManager : MonoBehaviour {
             currentHouse = null;
             description.GetComponent<Text>().text = ChooseNextDeadString();
             tpRend.sprite = null;
+            audioSource.PlayOneShot(doorKnockSound);
             return;
         }
 
@@ -201,6 +204,7 @@ public class TownManager : MonoBehaviour {
             currentHouse = null;
             tpName.GetComponent<Text>().text = house.person.name;
             description.GetComponent<Text>().text = "There is nothing more this person can do for you.";
+            audioSource.PlayOneShot(doorSlamSound);
             return;
         }
 
@@ -209,6 +213,7 @@ public class TownManager : MonoBehaviour {
             currentHouse = null;
             tpName.GetComponent<Text>().text = house.person.name;
             description.GetComponent<Text>().text = "Your knocking is met by a yell. GO AWAY!";
+            audioSource.PlayOneShot(doorSlamSound);
             return;
         }
 
@@ -223,6 +228,7 @@ public class TownManager : MonoBehaviour {
         }
 
         currentHouse = house;
+        audioSource.PlayOneShot(doorKnockSound);
     }
 
 
