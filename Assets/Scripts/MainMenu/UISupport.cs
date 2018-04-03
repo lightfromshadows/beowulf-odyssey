@@ -26,6 +26,16 @@ public class UISupport : MonoBehaviour {
         StartCoroutine(TeaseAndStart());
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void LaunchURL(string url)
+    {
+        Application.OpenURL(url);
+    }
+
     IEnumerator TeaseAndStart()
     {
         buttonText.text = teaser;
